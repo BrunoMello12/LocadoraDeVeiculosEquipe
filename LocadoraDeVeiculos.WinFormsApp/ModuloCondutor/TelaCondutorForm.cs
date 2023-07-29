@@ -16,5 +16,14 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCondutor
         {
             InitializeComponent();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TelaCondutorForm_Load(object sender, EventArgs e)
+        {
+        }
     }
 }
