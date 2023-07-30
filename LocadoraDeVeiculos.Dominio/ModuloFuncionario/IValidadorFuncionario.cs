@@ -1,4 +1,4 @@
-﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+﻿using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
 {
-    public interface IRepositorioFuncionario : IRepositorio<Funcionario>
+    public interface IValidadorFuncionario : IValidator<Funcionario>
     {
-        public Funcionario SelecionarPorNome(string nome);
     }
 }
