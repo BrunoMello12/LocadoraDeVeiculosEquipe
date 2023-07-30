@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtNome = new TextBox();
             txtTelefone = new TextBox();
             label5 = new Label();
-            this.txtEmail = new TextBox();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
@@ -46,14 +44,7 @@
             dateValidade = new DateTimePicker();
             label7 = new Label();
             SuspendLayout();
-            // 
-            // txtNome
-            // 
-            this.txtNome.Location = new Point(86, 83);
-            this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new Size(230, 23);
-            this.txtNome.TabIndex = 68;
-            // 
+            //
             // txtTelefone
             // 
             txtTelefone.Location = new Point(86, 141);
@@ -69,13 +60,6 @@
             label5.Size = new Size(54, 15);
             label5.TabIndex = 66;
             label5.Text = "Telefone:";
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new Point(86, 112);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new Size(230, 23);
-            this.txtEmail.TabIndex = 65;
             // 
             // label3
             // 
@@ -209,10 +193,8 @@
             Controls.Add(cbCliente);
             Controls.Add(btnGravar);
             Controls.Add(btnCancelar);
-            Controls.Add(this.txtNome);
             Controls.Add(txtTelefone);
             Controls.Add(label5);
-            Controls.Add(this.txtEmail);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
