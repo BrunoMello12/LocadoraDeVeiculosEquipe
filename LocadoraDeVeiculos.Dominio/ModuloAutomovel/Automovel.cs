@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Dominio.ModuloGrupoAutomoveis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloAutomovel
         public decimal CapacidadeLitros { get; set; }
 
         public int Ano { get; set; }
+
+        public GrupoAutomoveis GrupoDoAutomovel { get; set; }
 
         public Automovel(string placa, string marca, string cor, string modelo, TipoCombustivelEnum tipoCombustivel, decimal capacidadeLitros, int ano)
         {
