@@ -10,6 +10,8 @@ namespace LocadoraDeVeiculos.WinFormsApp.Compartilhado
     {
         #region tooltips dos botões
 
+        public abstract string TipoCadastro { get; }
+
         public abstract string TooltipInserir { get; }
 
         public abstract string TooltipEditar { get; }

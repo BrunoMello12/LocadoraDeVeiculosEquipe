@@ -43,8 +43,10 @@
             label6 = new Label();
             dateValidade = new DateTimePicker();
             label7 = new Label();
+            txtEmail = new TextBox();
+            txtNome = new TextBox();
             SuspendLayout();
-            //
+            // 
             // txtTelefone
             // 
             txtTelefone.Location = new Point(86, 141);
@@ -178,11 +180,27 @@
             label7.TabIndex = 94;
             label7.Text = "Validade:";
             // 
+            // txtEmail
+            // 
+            txtEmail.Location = new Point(86, 112);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(230, 23);
+            txtEmail.TabIndex = 95;
+            // 
+            // txtNome
+            // 
+            txtNome.Location = new Point(86, 83);
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(230, 23);
+            txtNome.TabIndex = 96;
+            // 
             // TelaCondutorForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(343, 303);
+            Controls.Add(txtNome);
+            Controls.Add(txtEmail);
             Controls.Add(label7);
             Controls.Add(dateValidade);
             Controls.Add(txtCnh);
@@ -229,5 +247,7 @@
         private Label label6;
         private DateTimePicker dateValidade;
         private Label label7;
+        private TextBox txtEmail;
+        private TextBox txtNome;
     }
 }
