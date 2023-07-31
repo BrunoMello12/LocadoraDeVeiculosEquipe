@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
+using LocadoraDeVeiculos.Infra.Orm.Compartilhado;
 
 namespace LocadoraDeVeiculos.Infra.Orm.ModuloCliente
 {
-    internal class RepositorioClienteEmOrm
+    internal class RepositorioClienteEmOrm : RepositorioBaseEmOrm<Cliente>, IRepositorioCliente
     {
+        public RepositorioClienteEmOrm(LocadoraDeVeiculosDbContext dbContext) : base(dbContext)
+        {
+        }
+
+        public Cliente SelecionarPorNome(string nome)
+        {
+            return registros.FirstOrDefault(x => x.Nome == nome);
+        }
     }
 }
