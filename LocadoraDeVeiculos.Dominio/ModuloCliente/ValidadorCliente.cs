@@ -1,8 +1,9 @@
 ﻿using FluentValidation;
+using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 {
-    public class ValidadorCliente : AbstractValidator<Cliente>
+    public class ValidadorCliente : AbstractValidator<Cliente>, IValidadorCliente
     {
         public ValidadorCliente()
         {

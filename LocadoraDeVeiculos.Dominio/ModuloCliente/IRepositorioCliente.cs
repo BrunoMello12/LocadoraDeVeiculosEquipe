@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 {
-    internal class IRepositorioCliente
+    public interface IRepositorioCliente : IRepositorio<Cliente>
     {
+        public Cliente SelecionarPorNome(string nome);
     }
 }
