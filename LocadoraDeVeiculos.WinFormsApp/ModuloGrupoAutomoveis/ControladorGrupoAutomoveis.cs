@@ -1,39 +1,123 @@
-﻿using LocadoraDeVeiculos.WinFormsApp.Compartilhado;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentResults;
+using LocadoraDeVeiculos.Aplicacao.ModuloGrupoAutomoveis;
+using LocadoraDeVeiculos.Dominio.ModuloGrupoAutomoveis;
+using LocadoraDeVeiculos.WinFormsApp.Compartilhado;
 
 namespace LocadoraDeVeiculos.WinFormsApp.ModuloGrupoAutomoveis
 {
     public class ControladorGrupoAutomoveis : ControladorBase
     {
+        private TabelaGrupoAutomoveisControl tabelaGrupoAutomoveis;
+        private ServicoGrupoAutomoveis servicoGrupoAutomoveis;
+        private IRepositorioGrupoAutomoveis repositorioGrupoAutomoveis;
+
+        public ControladorGrupoAutomoveis(TabelaGrupoAutomoveisControl tabelaGrupoAutomoveis, ServicoGrupoAutomoveis servicoGrupoAutomoveis,
+            IRepositorioGrupoAutomoveis repositorioGrupoAutomoveis)
+        {
+            this.tabelaGrupoAutomoveis = tabelaGrupoAutomoveis;
+            this.servicoGrupoAutomoveis = servicoGrupoAutomoveis;
+            this.repositorioGrupoAutomoveis = repositorioGrupoAutomoveis;
+        }
+
         public override void Inserir()
         {
-            throw new NotImplementedException();
+            TelaGrupoAutomoveisForm tela = new TelaGrupoAutomoveisForm();
+
+            tela.onGravarRegistro += servicoGrupoAutomoveis.Inserir;
+
+            tela.ConfigurarGrupoAutomoveis(new GrupoAutomoveis());
+
+            DialogResult resultado = tela.ShowDialog();
+
+            if (resultado == DialogResult.OK)
+            {
+                CarregarGrupoAutomoveis();
+            }
         }
 
         public override void Editar()
         {
-            throw new NotImplementedException();
+            int id = tabelaGrupoAutomoveis.ObtemIdSelecionado();
+
+            GrupoAutomoveis grupoAutomoveisSelecionado = repositorioGrupoAutomoveis.SelecionarPorId(id);
+
+            if (grupoAutomoveisSelecionado == null)
+            {
+                MessageBox.Show("Selecione um grupo de automoveis primeiro",
+                "Edição de Grupo de Automoveis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            TelaGrupoAutomoveisForm tela = new TelaGrupoAutomoveisForm();
+
+            tela.onGravarRegistro += servicoGrupoAutomoveis.Editar;
+
+            tela.ConfigurarGrupoAutomoveis(grupoAutomoveisSelecionado);
+
+            DialogResult resultado = tela.ShowDialog();
+
+            if (resultado == DialogResult.OK)
+            {
+                CarregarGrupoAutomoveis();
+            }
         }
 
         public override void Excluir()
         {
-            throw new NotImplementedException();
+            int id = tabelaGrupoAutomoveis.ObtemIdSelecionado();
+
+            GrupoAutomoveis grupoAutomoveisSelecionado = repositorioGrupoAutomoveis.SelecionarPorId(id);
+
+            if (grupoAutomoveisSelecionado == null)
+            {
+                MessageBox.Show("Selecione um Grupo de Automoveis primeiro",
+                "Exclusão de Grupo de Automoveis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            DialogResult opcaoEscolhida = MessageBox.Show("Deseja realmente excluir o Grupo de Automoveis?",
+               "Exclusão de Grupo de Automoveis", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (opcaoEscolhida == DialogResult.OK)
+            {
+                Result resultado = servicoGrupoAutomoveis.Excluir(grupoAutomoveisSelecionado);
+
+                if (resultado.IsFailed)
+                {
+                    MessageBox.Show(resultado.Errors[0].Message, "Exclusão de Grupo de Automoveis",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return;
+                }
+
+                CarregarGrupoAutomoveis();
+            }
         }
 
         public override ConfiguracaoToolBoxBase ObtemConfiguracaoToolbox()
         {
-            throw new NotImplementedException();
+            return new ConfiguracaoToolBoxGrupoAutomoveis();
         }
 
         public override UserControl ObtemListagem()
         {
-            throw new NotImplementedException();
+            if (tabelaGrupoAutomoveis == null)
+                tabelaGrupoAutomoveis = new TabelaGrupoAutomoveisControl();
+
+            CarregarGrupoAutomoveis();
+
+            return tabelaGrupoAutomoveis;
         }
 
-        
+        private void CarregarGrupoAutomoveis()
+        {
+            List<GrupoAutomoveis> grupoAutomoveis = repositorioGrupoAutomoveis.SelecionarTodos();
+
+            tabelaGrupoAutomoveis.AtualizarRegistros(grupoAutomoveis);
+
+            mensagemRodape = string.Format("Visualizando {0} Grupo de Automoveis", grupoAutomoveis.Count);
+
+            TelaPrincipalForm.Instancia.AtualizarRodape(mensagemRodape);
+        }
     }
 }
