@@ -45,12 +45,14 @@
             label6 = new Label();
             txtCapacidadeEmLitros = new TextBox();
             label7 = new Label();
+            txtPlaca = new TextBox();
+            lblPlaca = new Label();
             ((System.ComponentModel.ISupportInitialize)picFotoCarro).BeginInit();
             SuspendLayout();
             // 
             // txtMarca
             // 
-            txtMarca.Location = new Point(158, 204);
+            txtMarca.Location = new Point(158, 207);
             txtMarca.Name = "txtMarca";
             txtMarca.Size = new Size(121, 23);
             txtMarca.TabIndex = 22;
@@ -59,18 +61,19 @@
             // 
             btnGravar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnGravar.DialogResult = DialogResult.OK;
-            btnGravar.Location = new Point(129, 276);
+            btnGravar.Location = new Point(121, 309);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(76, 34);
             btnGravar.TabIndex = 21;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click;
             // 
             // btnCancelar
             // 
             btnCancelar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnCancelar.DialogResult = DialogResult.Cancel;
-            btnCancelar.Location = new Point(211, 276);
+            btnCancelar.Location = new Point(203, 309);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(76, 34);
             btnCancelar.TabIndex = 20;
@@ -80,7 +83,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(106, 207);
+            label3.Location = new Point(106, 210);
             label3.Name = "label3";
             label3.Size = new Size(46, 15);
             label3.TabIndex = 18;
@@ -89,7 +92,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(98, 179);
+            label2.Location = new Point(98, 182);
             label2.Name = "label2";
             label2.Size = new Size(54, 15);
             label2.TabIndex = 17;
@@ -98,7 +101,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(25, 92);
+            label1.Location = new Point(25, 95);
             label1.Name = "label1";
             label1.Size = new Size(129, 15);
             label1.TabIndex = 16;
@@ -133,7 +136,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(120, 236);
+            label5.Location = new Point(120, 239);
             label5.Name = "label5";
             label5.Size = new Size(32, 15);
             label5.TabIndex = 27;
@@ -141,7 +144,7 @@
             // 
             // txtCor
             // 
-            txtCor.Location = new Point(158, 233);
+            txtCor.Location = new Point(158, 236);
             txtCor.Name = "txtCor";
             txtCor.Size = new Size(121, 23);
             txtCor.TabIndex = 28;
@@ -149,14 +152,14 @@
             // cbGrpAutomoveis
             // 
             cbGrpAutomoveis.FormattingEnabled = true;
-            cbGrpAutomoveis.Location = new Point(158, 89);
+            cbGrpAutomoveis.Location = new Point(158, 92);
             cbGrpAutomoveis.Name = "cbGrpAutomoveis";
             cbGrpAutomoveis.Size = new Size(121, 23);
             cbGrpAutomoveis.TabIndex = 29;
             // 
             // txtModelo
             // 
-            txtModelo.Location = new Point(158, 176);
+            txtModelo.Location = new Point(158, 179);
             txtModelo.Name = "txtModelo";
             txtModelo.Size = new Size(121, 23);
             txtModelo.TabIndex = 30;
@@ -164,7 +167,7 @@
             // cbTipoCombustivel
             // 
             cbTipoCombustivel.FormattingEnabled = true;
-            cbTipoCombustivel.Location = new Point(158, 118);
+            cbTipoCombustivel.Location = new Point(158, 121);
             cbTipoCombustivel.Name = "cbTipoCombustivel";
             cbTipoCombustivel.Size = new Size(121, 23);
             cbTipoCombustivel.TabIndex = 32;
@@ -172,7 +175,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(33, 123);
+            label6.Location = new Point(33, 126);
             label6.Name = "label6";
             label6.Size = new Size(119, 15);
             label6.TabIndex = 31;
@@ -180,7 +183,7 @@
             // 
             // txtCapacidadeEmLitros
             // 
-            txtCapacidadeEmLitros.Location = new Point(158, 147);
+            txtCapacidadeEmLitros.Location = new Point(158, 150);
             txtCapacidadeEmLitros.Name = "txtCapacidadeEmLitros";
             txtCapacidadeEmLitros.Size = new Size(121, 23);
             txtCapacidadeEmLitros.TabIndex = 34;
@@ -188,17 +191,35 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(25, 150);
+            label7.Location = new Point(25, 153);
             label7.Name = "label7";
             label7.Size = new Size(127, 15);
             label7.TabIndex = 33;
             label7.Text = "Capacidade Em Litros: ";
             // 
+            // txtPlaca
+            // 
+            txtPlaca.Location = new Point(158, 265);
+            txtPlaca.Name = "txtPlaca";
+            txtPlaca.Size = new Size(121, 23);
+            txtPlaca.TabIndex = 36;
+            // 
+            // lblPlaca
+            // 
+            lblPlaca.AutoSize = true;
+            lblPlaca.Location = new Point(120, 268);
+            lblPlaca.Name = "lblPlaca";
+            lblPlaca.Size = new Size(41, 15);
+            lblPlaca.TabIndex = 35;
+            lblPlaca.Text = "Placa: ";
+            // 
             // TelaAutomovelForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(299, 322);
+            ClientSize = new Size(299, 355);
+            Controls.Add(txtPlaca);
+            Controls.Add(lblPlaca);
             Controls.Add(txtCapacidadeEmLitros);
             Controls.Add(label7);
             Controls.Add(cbTipoCombustivel);
@@ -244,5 +265,7 @@
         private Label label6;
         private TextBox txtCapacidadeEmLitros;
         private Label label7;
+        private TextBox txtPlaca;
+        private Label lblPlaca;
     }
 }
