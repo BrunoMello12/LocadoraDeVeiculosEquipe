@@ -37,7 +37,7 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloFuncionario
             }
             catch (Exception exc)
             {
-                string msgErro = "Falha ao tentar inserir disciplina.";
+                string msgErro = "Falha ao tentar inserir funcionario.";
 
                 Log.Error(exc, msgErro + "{@d}", funcionario);
 
@@ -47,7 +47,7 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloFuncionario
 
         public Result Editar(Funcionario funcionario)
         {
-            Log.Debug("Tentando editar disciplina...{@d}", funcionario);
+            Log.Debug("Tentando editar funcionario...{@d}", funcionario);
 
             List<string> erros = ValidarFuncionario(funcionario);
 
@@ -74,7 +74,7 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloFuncionario
 
         public Result Excluir(Funcionario funcionario)
         {
-            Log.Debug("Tentando excluir disciplina...{@d}", funcionario);
+            Log.Debug("Tentando excluir funcionario...{@d}", funcionario);
 
             try
             {
