@@ -23,6 +23,5 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloParceiro
             this.tabelaParceiro = tabelaParceiro;
             this.servicoParceiro = servicoParceiro;
         }
-
     }
 }
