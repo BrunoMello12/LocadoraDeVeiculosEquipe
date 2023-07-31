@@ -78,13 +78,13 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloFuncionario
 
             try
             {
-                bool disciplinaExiste = repositorioFuncionario.Existe(funcionario);
+                bool funcionarioExiste = repositorioFuncionario.Existe(funcionario);
 
-                if (disciplinaExiste == false)
+                if (funcionarioExiste == false)
                 {
-                    Log.Warning("Disciplina {DisciplinaId} não encontrada para excluir", funcionario.Id);
+                    Log.Warning("Funcionario {FuncionarioId} não encontrada para excluir", funcionario.Id);
 
-                    return Result.Fail("Disciplina não encontrada");
+                    return Result.Fail("Funcionario não encontrada");
                 }
 
                 repositorioFuncionario.Excluir(funcionario);
@@ -99,30 +99,30 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloFuncionario
 
                 string msgErro;
 
-                if (ex.Message.Contains("FK_TBMateria_TBDisciplina"))
-                    msgErro = "Esta disciplina está relacionada com uma matéria e não pode ser excluída";
+                if (ex.Message.Contains("FK_TBAluguel_TBFuncionario"))
+                    msgErro = "Este funcionario está relacionada com um aluguel e não pode ser excluído";
                 else
-                    msgErro = "Falha ao tentar excluir disciplina";
+                    msgErro = "Falha ao tentar excluir funcionario";
 
                 erros.Add(msgErro);
 
-                Log.Error(ex, msgErro + " {DisciplinaId}", funcionario.Id);
+                Log.Error(ex, msgErro + " {FuncionarioId}", funcionario.Id);
 
                 return Result.Fail(erros);
             }
         }
 
-        private List<string> ValidarFuncionario(Funcionario disciplina)
+        private List<string> ValidarFuncionario(Funcionario funcionario)
         {
-            var resultadoValidacao = validadorFuncionario.Validate(disciplina);
+            var resultadoValidacao = validadorFuncionario.Validate(funcionario);
 
             List<string> erros = new List<string>();
 
             if (resultadoValidacao != null)
                 erros.AddRange(resultadoValidacao.Errors.Select(x => x.ErrorMessage));
 
-            if (NomeDuplicado(disciplina))
-                erros.Add($"Este nome '{disciplina.Nome}' já está sendo utilizado");
+            if (NomeDuplicado(funcionario))
+                erros.Add($"Este nome '{funcionario.Nome}' já está sendo utilizado");
 
             foreach (string erro in erros)
             {
