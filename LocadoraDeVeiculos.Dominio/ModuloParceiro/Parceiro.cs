@@ -19,7 +19,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloParceiro
 
         public override void Atualizar(Parceiro registro)
         {
-            throw new NotImplementedException();
+            Nome = registro.Nome;
         }
     }
 }
