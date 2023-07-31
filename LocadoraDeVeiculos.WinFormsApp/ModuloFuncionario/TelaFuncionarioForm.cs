@@ -1,4 +1,7 @@
-﻿using System;
+﻿using FluentResults;
+using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
+using LocadoraDeVeiculos.WinFormsApp.Compartilhado;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +15,44 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloFuncionario
 {
     public partial class TelaFuncionarioForm : Form
     {
+        private Funcionario funcionario;
+
+        public event GravarRegistroDelegate<Funcionario> onGravarRegistro;
+
         public TelaFuncionarioForm()
         {
             InitializeComponent();
+            this.ConfigurarDialog();
+        }
+
+        public Funcionario ObterFuncionario()
+        {
+            funcionario.Nome = txtNome.Text;
+
+            return funcionario;
+        }
+
+        public void ConfigurarFuncionario(Funcionario funcionario)
+        {
+            this.funcionario = funcionario;
+
+            txtNome.Text = funcionario.Nome;
+        }
+
+        private void btnGravar_Click(object sender, EventArgs e)
+        {
+            this.funcionario = ObterFuncionario();
+
+            Result resultado = onGravarRegistro(funcionario);
+
+            if (resultado.IsFailed)
+            {
+                string erro = resultado.Errors[0].Message;
+
+                TelaPrincipalForm.Instancia.AtualizarRodape(erro);
+
+                DialogResult = DialogResult.None;
+            }
         }
     }
 }
