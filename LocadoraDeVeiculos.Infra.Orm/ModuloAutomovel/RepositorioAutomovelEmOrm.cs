@@ -25,5 +25,12 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloAutomovel
 
             return registros.Find(id);
         }
+        public List<Automovel> SelecionarTodos(bool incluirGrupoDoAutomovel = false)
+        {
+            if (incluirGrupoDoAutomovel)
+                return registros.Include(x => x.GrupoDoAutomovel).ToList();
+
+            return registros.ToList();
+        }
     }
 }
