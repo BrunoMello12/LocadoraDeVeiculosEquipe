@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Dominio.ModuloAutomovel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,13 @@ namespace LocadoraDeVeiculos.Dominio.ModuloGrupoAutomoveis
     {
         public string Nome { get; set; }
 
+        public List<Automovel> listaDeAutomoveis { get; set; }
+
         public GrupoAutomoveis(int id, string nome)
         {
             Id = id;
             Nome = nome;
+            listaDeAutomoveis = new List<Automovel>();
         }
 
         public override void Atualizar(GrupoAutomoveis registro)
