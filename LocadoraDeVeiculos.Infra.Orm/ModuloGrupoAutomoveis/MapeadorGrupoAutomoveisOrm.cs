@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoAutomoveis;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace LocadoraDeVeiculos.Infra.Orm.ModuloGrupoAutomoveis
 {
-    internal class MapeadorGrupoAutomoveisOrm
+    public class MapeadorGrupoAutomoveisOrm : IEntityTypeConfiguration<GrupoAutomoveis>
     {
+        public void Configure(EntityTypeBuilder<GrupoAutomoveis> builder)
+        {
+            builder.ToTable("TBGrupoAutomoveis");
+
+            builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
+
+            builder.Property(x => x.Nome).IsRequired();
+        }
     }
 }
