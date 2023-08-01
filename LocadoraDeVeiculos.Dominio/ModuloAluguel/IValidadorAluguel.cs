@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloAluguel
 {
-    public class IRepositorioAluguel
+    internal interface IValidadorAluguel
     {
     }
 }
