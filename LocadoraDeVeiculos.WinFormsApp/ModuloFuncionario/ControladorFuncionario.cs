@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Aplicacao.ModuloFuncionario;
+﻿using FluentResults;
+using LocadoraDeVeiculos.Aplicacao.ModuloFuncionario;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.WinFormsApp.Compartilhado;
 using System;
@@ -42,22 +43,76 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloFuncionario
 
         public override void Editar()
         {
-            throw new NotImplementedException();
+            int id = tabelaFuncionario.ObtemIdSelecionado();
+
+            Funcionario funcionarioSelecionada = repositorioFuncionario.SelecionarPorId(id);
+
+            if (funcionarioSelecionada == null)
+            {
+                MessageBox.Show("Selecione uma disciplina primeiro",
+                "Edição de Compromissos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            TelaFuncionarioForm tela = new TelaFuncionarioForm();
+
+            tela.onGravarRegistro += servicoFuncionario.Editar;
+
+            tela.ConfigurarFuncionario(funcionarioSelecionada);
+
+            DialogResult resultado = tela.ShowDialog();
+
+            if (resultado == DialogResult.OK)
+            {
+                CarregarFuncionarios();
+            }
         }
 
         public override void Excluir()
         {
-            throw new NotImplementedException();
+            int id = tabelaFuncionario.ObtemIdSelecionado();
+
+            Funcionario funcionarioSelecionada = repositorioFuncionario.SelecionarPorId(id);
+
+            if (funcionarioSelecionada == null)
+            {
+                MessageBox.Show("Selecione uma funcionario primeiro",
+                "Exclusão de Funcionarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            DialogResult opcaoEscolhida = MessageBox.Show("Deseja realmente excluir o funcionario?",
+               "Exclusão de Funcionarios", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (opcaoEscolhida == DialogResult.OK)
+            {
+                Result resultado = servicoFuncionario.Excluir(funcionarioSelecionada);
+
+                if (resultado.IsFailed)
+                {
+                    MessageBox.Show(resultado.Errors[0].Message, "Exclusão de Funcionarios",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return;
+                }
+
+                CarregarFuncionarios();
+            }
         }
 
         public override ConfiguracaoToolBoxBase ObtemConfiguracaoToolbox()
         {
-            throw new NotImplementedException();
+            return new ConfiguracaoToolBoxFuncionario();
         }
 
         public override UserControl ObtemListagem()
         {
-            throw new NotImplementedException();
+            if (tabelaFuncionario == null)
+                tabelaFuncionario = new TabelaFuncionarioControl();
+
+            CarregarFuncionarios();
+
+            return tabelaFuncionario;
         }
 
         private void CarregarFuncionarios()
