@@ -22,7 +22,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloGrupoAutomoveis
             
         }
 
-        public GrupoAutomoveis(int id, string nome)
+        public GrupoAutomoveis(Guid id, string nome)
         {
             Id = id;
             Nome = nome;

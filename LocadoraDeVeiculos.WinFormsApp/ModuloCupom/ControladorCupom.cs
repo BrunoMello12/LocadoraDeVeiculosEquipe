@@ -42,7 +42,7 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCupom
 
         public override void Editar()
         {
-            int id = tabelaCupom.ObtemIdSelecionado();
+            Guid id = tabelaCupom.ObtemIdSelecionado();
 
             Cupom cupomSelecionado = repositorioCupom.SelecionarPorId(id);
 
@@ -69,7 +69,7 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCupom
 
         public override void Excluir()
         {
-            int id = tabelaCupom.ObtemIdSelecionado();
+            Guid id = tabelaCupom.ObtemIdSelecionado();
 
             Cupom cupomSelecionado = repositorioCupom.SelecionarPorId(id);
 

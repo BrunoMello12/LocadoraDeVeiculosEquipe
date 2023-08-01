@@ -42,7 +42,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCobranca
             KmDisponivel = kmDisponivel;
         }
 
-        public Cobranca(int id, GrupoAutomoveis grupoAutomoveis, TipoPlanoEnum tipoPlano, decimal precoDiaria)
+        public Cobranca(Guid id, GrupoAutomoveis grupoAutomoveis, TipoPlanoEnum tipoPlano, decimal precoDiaria)
         {
             Id = id;
             GrupoAutomoveis = grupoAutomoveis;

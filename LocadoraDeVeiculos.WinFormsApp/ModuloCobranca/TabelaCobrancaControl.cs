@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloCobranca;
+﻿using GeradorTestes.WinApp;
+using LocadoraDeVeiculos.Dominio.ModuloCobranca;
 using LocadoraDeVeiculos.WinFormsApp.Compartilhado;
 
 namespace LocadoraDeVeiculos.WinFormsApp.ModuloCobranca
@@ -44,7 +45,7 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCobranca
             }
         }
 
-        internal int ObtemIdSelecionado()
+        internal Guid ObtemIdSelecionado()
         {
             return grid.SelecionarId();
         }
