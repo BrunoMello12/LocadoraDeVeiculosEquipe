@@ -8,7 +8,7 @@ using LocadoraDeVeiculos.Dominio.Compartilhado;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloParceiro
 {
-    internal class ValidadorParceiro : AbstractValidator<Parceiro>, IValidadorParceiro
+    public class ValidadorParceiro : AbstractValidator<Parceiro>, IValidadorParceiro
     {
         public ValidadorParceiro()
         {

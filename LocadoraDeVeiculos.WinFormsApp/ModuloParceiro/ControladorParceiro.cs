@@ -1,5 +1,6 @@
 ﻿using LocadoraDeVeiculos.Aplicacao.ModuloParceiro;
 using LocadoraDeVeiculos.Dominio.ModuloParceiro;
+using LocadoraDeVeiculos.WinFormsApp.Compartilhado;
 using LocadoraDeVeiculos.WinFormsApp.ModuloParceiro;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.WinFormsApp.ModuloParceiro
 {
-    public class ControladorParceiro
+    public class ControladorParceiro : ControladorBase
     {
         private IRepositorioParceiro repositorioParceiro;
 
@@ -17,11 +18,35 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloParceiro
 
         private ServicoParceiro servicoParceiro;
 
-        public ControladorParceiro(IRepositorioParceiro repositorioParceiro, TabelaParceiroControl tabelaParceiro, ServicoParceiro servicoParceiro)
+        public ControladorParceiro(IRepositorioParceiro repositorioParceiro, ServicoParceiro servicoParceiro)
         {
             this.repositorioParceiro = repositorioParceiro;
-            this.tabelaParceiro = tabelaParceiro;
             this.servicoParceiro = servicoParceiro;
+        }
+
+        public override void Editar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Excluir()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Inserir()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override ConfiguracaoToolBoxBase ObtemConfiguracaoToolbox()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override UserControl ObtemListagem()
+        {
+            throw new NotImplementedException();
         }
     }
 }
