@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
+using System.ComponentModel.DataAnnotations;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloGrupoAutomoveis
 {
