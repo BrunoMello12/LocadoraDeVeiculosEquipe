@@ -26,6 +26,10 @@ namespace LocadoraDeVeiculos.Dominio.ModuloAutomovel
 
         public GrupoAutomoveis GrupoDoAutomovel { get; set; }
 
+        public Automovel()
+        {
+        }
+
         public Automovel(string placa, string marca, string cor, string modelo, TipoCombustivelEnum tipoCombustivel, decimal capacidadeLitros, int ano)
         {
             Placa = placa;
