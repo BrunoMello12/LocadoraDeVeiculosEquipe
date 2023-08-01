@@ -18,6 +18,8 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloFuncionario
             builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
 
             builder.Property(x => x.Nome).HasColumnType("varchar(MAX)").IsRequired();
+
+            builder.Property(x => x.Salario).HasColumnType("decimal").IsRequired();
         }
     }
 }
