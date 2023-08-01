@@ -3,9 +3,9 @@ using LocadoraDeVeiculos.WinFormsApp.Compartilhado;
 
 namespace LocadoraDeVeiculos.WinFormsApp.ModuloCobranca
 {
-    public partial class TabelaCobrancaControl : UserControl
+    public partial class TabelaCupomControl : UserControl
     {
-        public TabelaCobrancaControl()
+        public TabelaCupomControl()
         {
             InitializeComponent();
             grid.ConfigurarGridZebrado();

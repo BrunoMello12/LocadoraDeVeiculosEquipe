@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LocadoraDeVeiculos.Dominio.ModuloCupom;
+using LocadoraDeVeiculos.Infra.Orm.Compartilhado;
 
 namespace LocadoraDeVeiculos.Infra.Orm.ModuloCupom
 {
-    internal class RepositorioCupomEmOrm
+    public class RepositorioCupomEmOrm : RepositorioBaseEmOrm<Cupom>
     {
+        public RepositorioCupomEmOrm(LocadoraDeVeiculosDbContext dbContext) : base(dbContext)
+        {
+        }
+
+        public Cupom SelecionarPorNome(string nome)
+        {
+            return registros.FirstOrDefault(x => x.Nome == nome);
+        }
     }
 }

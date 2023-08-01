@@ -1,6 +1,6 @@
 ﻿namespace LocadoraDeVeiculos.WinFormsApp.ModuloCobranca
 {
-    partial class TabelaCobrancaControl
+    partial class TabelaCupomControl
     {
         /// <summary> 
         /// Required designer variable.

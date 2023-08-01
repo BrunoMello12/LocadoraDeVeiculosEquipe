@@ -1,7 +1,9 @@
 ﻿using FluentResults;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloCobranca;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoAutomoveis;
 using LocadoraDeVeiculos.WinFormsApp.Compartilhado;
+using System.Collections;
 
 namespace LocadoraDeVeiculos.WinFormsApp.ModuloCobranca
 {
@@ -10,10 +12,12 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCobranca
         private Cobranca cobranca;
         public event GravarRegistroDelegate<Cobranca> onGravarRegistro;
 
-        public TelaCobrancaForm()
+        public TelaCobrancaForm(List<GrupoAutomoveis> grupoAutomoveis)
         {
             InitializeComponent();
             this.ConfigurarDialog();
+            CarregarGrupoAutomoveis(grupoAutomoveis);
+            CarregarEnum();
         }
 
         public Cobranca ObterCobranca()
@@ -74,6 +78,31 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCobranca
             {
                 txtKmDisponivel.Enabled = true;
                 txtPrecoExtrapolado.Enabled = true;
+            }
+        }
+
+        private void CarregarEnum()
+        {
+            TipoPlanoEnum[] tipos = Enum.GetValues<TipoPlanoEnum>();
+
+            ArrayList items = new ArrayList();
+
+            foreach (Enum tipo in tipos)
+            {
+                var item = KeyValuePair.Create(tipo, tipo.GetDescription());
+                items.Add(item);
+            }
+
+            cbTipoPlano.DataSource = items;
+            cbTipoPlano.DisplayMember = "Value";
+            cbTipoPlano.ValueMember = "Key";
+        }
+
+        private void CarregarGrupoAutomoveis(List<GrupoAutomoveis> grupoAutomoveis)
+        {
+            foreach (GrupoAutomoveis gp in grupoAutomoveis)
+            {
+                cbGrupoAutomoveis.Items.Add(gp);
             }
         }
     }

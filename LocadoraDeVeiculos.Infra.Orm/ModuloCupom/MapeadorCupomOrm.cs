@@ -1,12 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LocadoraDeVeiculos.Dominio.ModuloCupom;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace LocadoraDeVeiculos.Infra.Orm.ModuloCupom
 {
-    internal class MapeadorCupomOrm
+    public class MapeadorCupomOrm : IEntityTypeConfiguration<Cupom>
     {
+        public void Configure(EntityTypeBuilder<Cupom> builder)
+        {
+            builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Property(x => x.Nome).IsRequired();
+            builder.Property(x => x.DataValidade).IsRequired();
+            builder.Property(x => x.Valor).IsRequired();
+
+            builder.HasOne(x => x.Parceiro)
+                .WithMany()
+                .IsRequired()
+                .HasConstraintName("FK_TBCupom_TBParceiro")
+                .OnDelete(DeleteBehavior.NoAction);
+        }
     }
 }

@@ -1,27 +1,30 @@
 ﻿using FluentResults;
 using LocadoraDeVeiculos.Aplicacao.ModuloCobranca;
 using LocadoraDeVeiculos.Dominio.ModuloCobranca;
+using LocadoraDeVeiculos.Dominio.ModuloGrupoAutomoveis;
 using LocadoraDeVeiculos.WinFormsApp.Compartilhado;
 
 namespace LocadoraDeVeiculos.WinFormsApp.ModuloCobranca
 {
     public class ControladorCobranca : ControladorBase
     {
-        private TabelaCobrancaControl tabelaCobranca;
+        private TabelaCupomControl tabelaCobranca;
         private ServicoCobranca servicoCobranca;
         private IRepositorioCobranca repositorioCobranca;
+        private IRepositorioGrupoAutomoveis repositorioGrupoAutomoveis;
 
-        public ControladorCobranca(TabelaCobrancaControl tabelaCobranca, ServicoCobranca servicoCobranca,
-            IRepositorioCobranca repositorioCobranca)
+        public ControladorCobranca(TabelaCupomControl tabelaCobranca, ServicoCobranca servicoCobranca,
+            IRepositorioCobranca repositorioCobranca, IRepositorioGrupoAutomoveis repositorioGrupoAutomoveis)
         {
             this.tabelaCobranca = tabelaCobranca;
             this.servicoCobranca = servicoCobranca;
             this.repositorioCobranca = repositorioCobranca;
+            this.repositorioGrupoAutomoveis = repositorioGrupoAutomoveis;
         }
 
         public override void Inserir()
         {
-            TelaCobrancaForm tela = new TelaCobrancaForm();
+            TelaCobrancaForm tela = new TelaCobrancaForm(repositorioGrupoAutomoveis.SelecionarTodos());
 
             tela.onGravarRegistro += servicoCobranca.Inserir;
 
@@ -48,7 +51,7 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCobranca
                 return;
             }
 
-            TelaCobrancaForm tela = new TelaCobrancaForm();
+            TelaCobrancaForm tela = new TelaCobrancaForm(repositorioGrupoAutomoveis.SelecionarTodos());
 
             tela.onGravarRegistro += servicoCobranca.Editar;
 
@@ -102,7 +105,7 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCobranca
         public override UserControl ObtemListagem()
         {
             if (tabelaCobranca == null)
-                tabelaCobranca = new TabelaCobrancaControl();
+                tabelaCobranca = new TabelaCupomControl();
 
             CarregarCobrancas();
 
