@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LocadoraDeVeiculos.WinFormsApp.Compartilhado;
 
 namespace LocadoraDeVeiculos.WinFormsApp.ModuloCliente
 {
-    public class ConfiguracaoToolBoxCliente
+    public class ConfiguracaoToolBoxCliente : ConfiguracaoToolBoxBase
     {
+        public override string TipoCadastro => "Cadastro de Clientes";
+
+        public override string TooltipInserir => "Inserir Cliente";
+
+        public override string TooltipEditar => "Editar Cliente";
+
+        public override string TooltipExcluir => "Excluir Cliente";
     }
 }

@@ -26,6 +26,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 
         public int NumeroCasa { get; set; }
 
+        public Cliente()
+        {
+            
+        }
+
         public Cliente(string nome, string email, string telefone, TipoClienteEnum tipoCliente, string cpf, string cnpj, string estado, string cidade, string bairro, string rua, int numeroCasa)
         {
             Nome = nome;
