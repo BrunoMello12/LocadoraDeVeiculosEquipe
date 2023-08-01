@@ -20,6 +20,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCobranca
 
         public decimal KmDisponivel { get; set; }
 
+        public Cobranca()
+        {
+            
+        }
+
         public Cobranca(GrupoAutomoveis grupoAutomoveis, TipoPlanoEnum tipoPlano, decimal precoDiaria, decimal precoPorKm)
         {
             GrupoAutomoveis = grupoAutomoveis;

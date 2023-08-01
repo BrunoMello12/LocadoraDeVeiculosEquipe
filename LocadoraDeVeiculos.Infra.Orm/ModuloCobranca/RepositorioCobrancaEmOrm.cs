@@ -1,12 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LocadoraDeVeiculos.Dominio.ModuloCobranca;
+using LocadoraDeVeiculos.Infra.Orm.Compartilhado;
+using Microsoft.EntityFrameworkCore;
 
 namespace LocadoraDeVeiculos.Infra.Orm.ModuloCobranca
 {
-    internal class RepositorioCobrancaEmOrm
+    public class RepositorioCobrancaEmOrm : RepositorioBaseEmOrm<Cobranca>
     {
+        public RepositorioCobrancaEmOrm(LocadoraDeVeiculosDbContext dbContext) : base(dbContext)
+        {
+        }
+
+        public List<Cobranca> SelecionarTodos(bool incluirGrupoAutomoveis = false)
+        {
+            if (incluirGrupoAutomoveis)
+                return registros.Include(x => x.GrupoAutomoveis).ToList();
+
+            return registros.ToList();
+        }
     }
 }

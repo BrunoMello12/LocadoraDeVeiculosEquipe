@@ -1,5 +1,6 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloAutomovel;
+using LocadoraDeVeiculos.Dominio.ModuloCobranca;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloGrupoAutomoveis
         public string Nome { get; set; }
 
         public List<Automovel> listaDeAutomoveis { get; set; }
+
+        public List<Cobranca> listaDeCobrancas { get; set; }
 
         public GrupoAutomoveis()
         {

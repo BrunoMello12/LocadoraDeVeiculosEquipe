@@ -12,6 +12,7 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloGrupoAutomoveis
         public TelaGrupoAutomoveisForm()
         {
             InitializeComponent();
+            this.ConfigurarDialog();
         }
 
         public GrupoAutomoveis ObterGrupoAutomoveis()

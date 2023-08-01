@@ -2,8 +2,8 @@
 
 namespace LocadoraDeVeiculos.Dominio.ModuloCobranca
 {
-    public interface IRepositorioCobranca : IRepositorio<Cobranca>
+    public interface IValidadorCobranca : IValidator<Cobranca>
     {
-
+      
     }
 }
