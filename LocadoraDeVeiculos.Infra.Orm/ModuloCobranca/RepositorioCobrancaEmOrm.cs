@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LocadoraDeVeiculos.Infra.Orm.ModuloCobranca
 {
-    public class RepositorioCobrancaEmOrm : RepositorioBaseEmOrm<Cobranca>
+    public class RepositorioCobrancaEmOrm : RepositorioBaseEmOrm<Cobranca>, IRepositorioCobranca
     {
         public RepositorioCobrancaEmOrm(LocadoraDeVeiculosDbContext dbContext) : base(dbContext)
         {

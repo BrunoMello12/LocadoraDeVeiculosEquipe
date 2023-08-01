@@ -11,10 +11,9 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloGrupoAutomoveis
         private ServicoGrupoAutomoveis servicoGrupoAutomoveis;
         private IRepositorioGrupoAutomoveis repositorioGrupoAutomoveis;
 
-        public ControladorGrupoAutomoveis(TabelaGrupoAutomoveisControl tabelaGrupoAutomoveis, ServicoGrupoAutomoveis servicoGrupoAutomoveis,
+        public ControladorGrupoAutomoveis(ServicoGrupoAutomoveis servicoGrupoAutomoveis,
             IRepositorioGrupoAutomoveis repositorioGrupoAutomoveis)
         {
-            this.tabelaGrupoAutomoveis = tabelaGrupoAutomoveis;
             this.servicoGrupoAutomoveis = servicoGrupoAutomoveis;
             this.repositorioGrupoAutomoveis = repositorioGrupoAutomoveis;
         }

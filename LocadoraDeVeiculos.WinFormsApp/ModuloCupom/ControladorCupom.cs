@@ -16,10 +16,9 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCupom
         private IRepositorioCupom repositorioCupom;
         private IRepositorioParceiro repositorioParceiro;
 
-        public ControladorCupom(TabelaCupomControl tabelaCupom, ServicoCupom servicoCupom,
+        public ControladorCupom(ServicoCupom servicoCupom,
             IRepositorioCupom repositorioCupom, IRepositorioParceiro repositorioParceiro)
         {
-            this.tabelaCupom = tabelaCupom;
             this.servicoCupom = servicoCupom;
             this.repositorioCupom = repositorioCupom;
             this.repositorioParceiro = repositorioParceiro;

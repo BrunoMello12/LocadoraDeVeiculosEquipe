@@ -13,10 +13,8 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCobranca
         private IRepositorioCobranca repositorioCobranca;
         private IRepositorioGrupoAutomoveis repositorioGrupoAutomoveis;
 
-        public ControladorCobranca(TabelaCupomControl tabelaCobranca, ServicoCobranca servicoCobranca,
-            IRepositorioCobranca repositorioCobranca, IRepositorioGrupoAutomoveis repositorioGrupoAutomoveis)
+        public ControladorCobranca(ServicoCobranca servicoCobranca, IRepositorioCobranca repositorioCobranca, IRepositorioGrupoAutomoveis repositorioGrupoAutomoveis)
         {
-            this.tabelaCobranca = tabelaCobranca;
             this.servicoCobranca = servicoCobranca;
             this.repositorioCobranca = repositorioCobranca;
             this.repositorioGrupoAutomoveis = repositorioGrupoAutomoveis;

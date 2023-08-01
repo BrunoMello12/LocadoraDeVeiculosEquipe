@@ -2,11 +2,6 @@
 using LocadoraDeVeiculos.Aplicacao.ModuloFuncionario;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.WinFormsApp.Compartilhado;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.WinFormsApp.ModuloFuncionario
 {
@@ -18,10 +13,9 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloFuncionario
 
         private ServicoFuncionario servicoFuncionario;
 
-        public ControladorFuncionario(IRepositorioFuncionario repositorioFuncionario, TabelaFuncionarioControl tabelaFuncionario, ServicoFuncionario servicoFuncionario)
+        public ControladorFuncionario(IRepositorioFuncionario repositorioFuncionario, ServicoFuncionario servicoFuncionario)
         {
             this.repositorioFuncionario = repositorioFuncionario;
-            this.tabelaFuncionario = tabelaFuncionario;
             this.servicoFuncionario = servicoFuncionario;
         }
 

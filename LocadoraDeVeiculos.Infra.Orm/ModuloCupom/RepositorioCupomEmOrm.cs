@@ -3,7 +3,7 @@ using LocadoraDeVeiculos.Infra.Orm.Compartilhado;
 
 namespace LocadoraDeVeiculos.Infra.Orm.ModuloCupom
 {
-    public class RepositorioCupomEmOrm : RepositorioBaseEmOrm<Cupom>
+    public class RepositorioCupomEmOrm : RepositorioBaseEmOrm<Cupom>, IRepositorioCupom
     {
         public RepositorioCupomEmOrm(LocadoraDeVeiculosDbContext dbContext) : base(dbContext)
         {
