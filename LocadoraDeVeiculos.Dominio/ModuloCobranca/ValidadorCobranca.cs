@@ -11,10 +11,10 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCobranca
                 .NotEmpty()
                 .NotNull()
                 .Must(BeDecimal)
-                .WithMessage("O campo PrecoDiaria deve conter apenas números válidos."); 
+                .WithMessage("O campo Preço Diaria deve conter apenas números válidos."); 
 
             RuleFor(x => x.TipoPlano)
-                .Must(x => x != TipoPlanoEnum.Nenhum);
+                .Must(x => x != TipoPlanoEnum.Nenhum).WithMessage("Selecione um Plano de cobrança!");
 
             RuleFor(x => x.GrupoAutomoveis)
                 .NotNull();

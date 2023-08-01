@@ -119,9 +119,6 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCobranca
 
             List<string> erros = new List<string>();
 
-            if (cobranca.TipoPlano == TipoPlanoEnum.Nenhum)
-                erros.Add("Selecione um Plano de cobrança!");
-
             if (resultadoValidacao != null)
                 erros.AddRange(resultadoValidacao.Errors.Select(x => x.ErrorMessage));
 
