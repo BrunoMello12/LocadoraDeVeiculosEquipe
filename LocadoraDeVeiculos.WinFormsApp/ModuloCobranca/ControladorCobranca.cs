@@ -38,7 +38,7 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCobranca
 
         public override void Editar()
         {
-            int id = tabelaCobranca.ObtemIdSelecionado();
+            Guid id = tabelaCobranca.ObtemIdSelecionado();
 
             Cobranca cobrancaSelecionada = repositorioCobranca.SelecionarPorId(id);
 
@@ -65,7 +65,7 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCobranca
 
         public override void Excluir()
         {
-            int id = tabelaCobranca.ObtemIdSelecionado();
+            Guid id = tabelaCobranca.ObtemIdSelecionado();
 
             Cobranca cobrancaSelecionada = repositorioCobranca.SelecionarPorId(id);
 

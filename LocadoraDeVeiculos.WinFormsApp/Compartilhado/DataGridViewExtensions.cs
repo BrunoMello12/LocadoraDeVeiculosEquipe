@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
+using System.Windows.Forms;
 
-namespace LocadoraDeVeiculos.WinFormsApp.Compartilhado
+namespace GeradorTestes.WinApp
 {
     public static class DataGridViewExtensions
     {
@@ -63,7 +61,7 @@ namespace LocadoraDeVeiculos.WinFormsApp.Compartilhado
             };
         }
 
-        public static int SelecionarId(this DataGridView grid)
+        public static Guid SelecionarId(this DataGridView grid)
         {
             const int firstLine = 0, firstColumn = 0;
             if (grid.SelectedRows.Count == 0)
@@ -74,7 +72,7 @@ namespace LocadoraDeVeiculos.WinFormsApp.Compartilhado
             if (value == null)
                 return default;
 
-            return Convert.ToInt32(value);
+            return Guid.Parse(value.ToString());
         }
     }
 }

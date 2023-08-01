@@ -42,7 +42,7 @@ namespace LocadoraDeVeiculos.Infra.Orm.Compartilhado
             return registros.Contains(registro);
         }
 
-        public T SelecionarPorId(int id)
+        public T SelecionarPorId(Guid id)
         {
             return registros.Find(id);
         }
