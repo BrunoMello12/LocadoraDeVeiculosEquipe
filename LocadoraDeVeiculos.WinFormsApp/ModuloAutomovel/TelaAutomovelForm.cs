@@ -20,6 +20,8 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloAutomovel
     {
         Automovel automovel;
 
+        public event GravarRegistroDelegate<Automovel> onGravarRegistro;
+
         public TelaAutomovelForm(List<GrupoAutomoveis> grupoDeAutomoveis)
         {
             InitializeComponent();
@@ -41,7 +43,7 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloAutomovel
             return automovel;
         }
 
-        public void ConfigurarTela(Automovel automovel)
+        public void ConfigurarAutomovel(Automovel automovel)
         {
             this.automovel = automovel;
 
@@ -79,22 +81,20 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloAutomovel
                 cbGrpAutomoveis.Items.Add(item);
             }
         }
-
-        //Precisa da APLICAÇÃO para poder ser feito.
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            //this.automovel = ObterAutomovel();
+            this.automovel = ObterAutomovel();
 
-            //Result resultado = onGravarRegistro(materia);
+            Result resultado = onGravarRegistro(automovel);
 
-            //if (resultado.IsFailed)
-            //{
-            //    string erro = resultado.Errors[0].Message;
+            if (resultado.IsFailed)
+            {
+                string erro = resultado.Errors[0].Message;
 
-            //    TelaPrincipalForm.Instancia.AtualizarRodape(erro);
+                TelaPrincipalForm.Instancia.AtualizarRodape(erro);
 
-            //    DialogResult = DialogResult.None;
-            //}
+                DialogResult = DialogResult.None;
+            }
         }
     }
 }
