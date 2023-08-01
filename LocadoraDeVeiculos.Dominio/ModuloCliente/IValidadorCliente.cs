@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 {
