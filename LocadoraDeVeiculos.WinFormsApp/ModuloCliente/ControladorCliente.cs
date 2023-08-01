@@ -68,7 +68,7 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCliente
 
         public override void Excluir()
         {
-            int id = tabelaCliente.ObtemIdSelecionado();
+            Guid id = tabelaCliente.ObtemIdSelecionado();
 
             Cliente clienteSelecionado = repositorioCliente.SelecionarPorId(id);
 
