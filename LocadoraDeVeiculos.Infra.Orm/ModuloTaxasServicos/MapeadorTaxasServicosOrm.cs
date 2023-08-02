@@ -14,7 +14,7 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloTaxasServicos
     {
         public void Configure(EntityTypeBuilder<TaxasServicos> builder)
         {
-            builder.ToTable("TBFuncionario");
+            builder.ToTable("TBTaxasServicos");
 
             builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
 

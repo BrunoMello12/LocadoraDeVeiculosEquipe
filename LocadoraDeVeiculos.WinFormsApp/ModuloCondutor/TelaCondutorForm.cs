@@ -42,7 +42,7 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCondutor
             txtNome.Text = condutor.Nome;
             cbCliente.SelectedItem = condutor.Cliente;
             chEhCondutor.Checked = condutor.ClienteCondutor;
-            dateValidade.Value = condutor.Validade;
+            dateValidade.MinDate = condutor.Validade;
         }
 
         private void btnGravar_Click(object sender, EventArgs e)

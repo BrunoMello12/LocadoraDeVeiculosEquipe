@@ -12,6 +12,12 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloCliente
 
             builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Property(x => x.Nome).HasColumnType("varchar(MAX)").IsRequired();
+
+            //builder.HasOne(x => x.Condutor)
+            //    .WithOne(x => x.Cliente)
+            //    .IsRequired(false)
+            //    .HasConstraintName("FK_TBCliente_TBCondutor")
+            //    .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

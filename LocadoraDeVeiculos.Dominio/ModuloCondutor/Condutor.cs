@@ -7,6 +7,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
     {
         public Cliente Cliente { get; set; }
 
+        public int ClienteId { get; set; }
+
         public bool ClienteCondutor { get; set; }
 
         public string Nome { get; set; }

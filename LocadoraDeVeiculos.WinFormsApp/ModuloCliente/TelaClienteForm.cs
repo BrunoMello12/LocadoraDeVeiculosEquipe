@@ -14,7 +14,7 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCliente
             InitializeComponent();
         }
 
-        public Cliente ObterCupom()
+        public Cliente ObterCliente()
         {
             cliente.Nome = txtNome.Text;
             cliente.Bairro = txtBairro.Text;
@@ -56,7 +56,7 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCliente
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            this.cliente = ObterCupom();
+            this.cliente = ObterCliente();
 
             Result resultado = onGravarRegistro(cliente);
 

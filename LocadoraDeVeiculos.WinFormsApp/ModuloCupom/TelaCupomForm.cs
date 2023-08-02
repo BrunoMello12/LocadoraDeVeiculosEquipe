@@ -31,7 +31,7 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCupom
             txtNome.Text = cupom.Nome;
             txtValor.Text = cupom.Valor.ToString();
             cbParceiro.SelectedItem = cupom.Parceiro;
-            dateValidade.Text = cupom.DataValidade.ToString();
+            dateValidade.MinDate = cupom.DataValidade;
         }
 
         private void btnGravar_Click(object sender, EventArgs e)

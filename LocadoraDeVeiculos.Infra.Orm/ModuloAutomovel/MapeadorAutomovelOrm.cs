@@ -16,7 +16,6 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloAutomovel
         {
             builderAutomovel.ToTable("TBAutomovel");
             builderAutomovel.Property(a => a.Id).IsRequired(true).ValueGeneratedOnAdd();
-            builderAutomovel.Property(a => a.GrupoDoAutomovel).IsRequired(true);
             builderAutomovel.Property(a => a.Modelo).IsRequired(true);
             builderAutomovel.Property(a => a.Marca).IsRequired(true);
             builderAutomovel.Property(a => a.Cor).IsRequired(true);

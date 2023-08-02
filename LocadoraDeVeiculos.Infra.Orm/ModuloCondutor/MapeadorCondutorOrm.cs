@@ -8,6 +8,7 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloCondutor
     {
         public void Configure(EntityTypeBuilder<Condutor> builder)
         {
+            builder.ToTable("TBCondutor");
             builder.Property(x => x.Id).ValueGeneratedOnAdd().IsRequired();
             builder.Property(x => x.Cnh).IsRequired();
             builder.Property(x => x.Telefone).IsRequired();
@@ -16,7 +17,7 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloCondutor
             builder.Property(x => x.Validade).IsRequired();
 
             builder.HasOne(x => x.Cliente)
-                .WithOne()
+                .WithMany(x => x.Condutores)
                 .IsRequired()
                 .HasConstraintName("FK_TBCondutor_TBCliente")
                 .OnDelete(DeleteBehavior.NoAction);

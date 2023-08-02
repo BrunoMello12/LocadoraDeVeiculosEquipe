@@ -21,8 +21,6 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCliente
 
         public override void Inserir()
         {
-            List<Cliente> clientes = repositorioCliente.SelecionarTodos();
-
             TelaClienteForm tela = new TelaClienteForm();
 
             tela.onGravarRegistro += servicoCliente.Inserir;

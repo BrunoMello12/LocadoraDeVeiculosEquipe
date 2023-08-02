@@ -8,6 +8,7 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloCupom
     {
         public void Configure(EntityTypeBuilder<Cupom> builder)
         {
+            builder.ToTable("TBCupom");
             builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Property(x => x.Nome).IsRequired();
             builder.Property(x => x.DataValidade).IsRequired();
