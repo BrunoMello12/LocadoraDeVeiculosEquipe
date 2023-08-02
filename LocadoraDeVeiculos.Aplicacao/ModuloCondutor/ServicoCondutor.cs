@@ -19,6 +19,9 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCondutor
 
             List<string> erros = ValidarCondutor(condutor);
 
+            if (erros.Count() > 0)
+                return Result.Fail(erros);
+
             try
             {
                 repositorioCondutor.Inserir(condutor);
