@@ -2,7 +2,7 @@
 
 namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
 {
-    public class ValidadorCondutor : AbstractValidator<Condutor>
+    public class ValidadorCondutor : AbstractValidator<Condutor>, IValidadorCondutor
     {
         public ValidadorCondutor()
         {

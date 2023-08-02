@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloPrecos
 {
-    public class ValidadorPrecos : AbstractValidator<Precos>, IValidator<Precos>
+    public interface IValidadorPrecos : IValidator<Precos>
     {
     }
 }

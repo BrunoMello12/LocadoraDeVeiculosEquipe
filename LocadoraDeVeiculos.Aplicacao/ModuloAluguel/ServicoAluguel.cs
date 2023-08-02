@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Aplicacao.ModuloAluguel
 {
-    internal class ServicoAluguel
+    public class ServicoAluguel
     {
     }
 }

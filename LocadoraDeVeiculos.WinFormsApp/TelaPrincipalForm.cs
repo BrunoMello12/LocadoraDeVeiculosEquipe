@@ -1,27 +1,40 @@
-﻿using LocadoraDeVeiculos.Aplicacao.ModuloAutomovel;
+﻿using LocadoraDeVeiculos.Aplicacao.ModuloAluguel;
+using LocadoraDeVeiculos.Aplicacao.ModuloAutomovel;
 using LocadoraDeVeiculos.Aplicacao.ModuloCliente;
 using LocadoraDeVeiculos.Aplicacao.ModuloCobranca;
+using LocadoraDeVeiculos.Aplicacao.ModuloCondutor;
 using LocadoraDeVeiculos.Aplicacao.ModuloCupom;
 using LocadoraDeVeiculos.Aplicacao.ModuloFuncionario;
 using LocadoraDeVeiculos.Aplicacao.ModuloGrupoAutomoveis;
 using LocadoraDeVeiculos.Aplicacao.ModuloParceiro;
+using LocadoraDeVeiculos.Aplicacao.ModuloPrecos;
+using LocadoraDeVeiculos.Aplicacao.ModuloTaxasServicos;
+using LocadoraDeVeiculos.Dominio.ModuloAluguel;
 using LocadoraDeVeiculos.Dominio.ModuloAutomovel;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Dominio.ModuloCobranca;
+using LocadoraDeVeiculos.Dominio.ModuloCondutor;
 using LocadoraDeVeiculos.Dominio.ModuloCupom;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoAutomoveis;
 using LocadoraDeVeiculos.Dominio.ModuloParceiro;
+using LocadoraDeVeiculos.Dominio.ModuloPrecos;
+using LocadoraDeVeiculos.Dominio.ModuloTaxasServicos;
 using LocadoraDeVeiculos.Infra.Orm.Compartilhado;
+using LocadoraDeVeiculos.Infra.Orm.ModuloAluguel;
 using LocadoraDeVeiculos.Infra.Orm.ModuloAutomovel;
 using LocadoraDeVeiculos.Infra.Orm.ModuloCliente;
 using LocadoraDeVeiculos.Infra.Orm.ModuloCobranca;
+using LocadoraDeVeiculos.Infra.Orm.ModuloCondutor;
 using LocadoraDeVeiculos.Infra.Orm.ModuloCupom;
 using LocadoraDeVeiculos.Infra.Orm.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.Orm.ModuloGrupoAutomoveis;
 using LocadoraDeVeiculos.Infra.Orm.ModuloParceiro;
+using LocadoraDeVeiculos.Infra.Orm.ModuloPrecos;
+using LocadoraDeVeiculos.Infra.Orm.ModuloTaxasServicos;
 using LocadoraDeVeiculos.WinFormsApp.Compartilhado;
 using LocadoraDeVeiculos.WinFormsApp.ModuloAluguel;
+using LocadoraDeVeiculos.WinFormsApp.ModuloAutomovel;
 using LocadoraDeVeiculos.WinFormsApp.ModuloCliente;
 using LocadoraDeVeiculos.WinFormsApp.ModuloCobranca;
 using LocadoraDeVeiculos.WinFormsApp.ModuloCondutor;
@@ -64,7 +77,7 @@ namespace LocadoraDeVeiculos.WinFormsApp
 
         private void ConfigurarControladores()
         {
-            /*
+
             var configuracao = new ConfigurationBuilder()
                .SetBasePath(Directory.GetCurrentDirectory())
                .AddJsonFile("appsettings.json")
@@ -89,7 +102,7 @@ namespace LocadoraDeVeiculos.WinFormsApp
             IRepositorioCliente repositorioCliente = new RepositorioClienteEmOrm(dbContext);
             ValidadorCliente validadorCliente = new ValidadorCliente();
             ServicoCliente servicoCliente = new ServicoCliente(repositorioCliente, validadorCliente);
-            controladores.Add("ControladorCliente", new ControladorCliente());
+            controladores.Add("ControladorCliente", new ControladorCliente(repositorioCliente, servicoCliente));
 
             //Fumcionario
             IRepositorioFuncionario repositorioFuncionario = new RepositorioFuncionarioEmOrm(dbContext);
@@ -113,7 +126,7 @@ namespace LocadoraDeVeiculos.WinFormsApp
             IRepositorioAutomovel repositorioAutomovel = new RepositorioAutomovelEmOrm(dbContext);
             ValidadorAutomovel validadorAutovel = new ValidadorAutomovel();
             ServicoAutomovel servicoAutomovel = new ServicoAutomovel(repositorioAutomovel, validadorAutovel);
-            controladores.Add("ControladorAutomovel", new ControladorCobranca(servicoCobranca, repositorioCobranca, repositorioGrupoAutomoveis));
+            controladores.Add("ControladorAutomovel", new ControladorAutomovel(repositorioAutomovel,repositorioGrupoAutomoveis,servicoAutomovel));
 
             //parceiro
             IRepositorioParceiro repositorioParceiro = new RepositorioParceiroEmOrm(dbContext);
@@ -132,11 +145,11 @@ namespace LocadoraDeVeiculos.WinFormsApp
             //condutor
             IRepositorioCondutor repositorioCondutor = new RepositorioCondutorEmOrm(dbContext);
             ValidadorCondutor validadorCondutor = new ValidadorCondutor();
-            ServicoCondutor servicoCondutor = new ServicoCondutor();
-            controladores.Add("ControladorCondutor", new ControladorCondutor());
+            ServicoCondutor servicoCondutor = new ServicoCondutor(repositorioCondutor, validadorCondutor);
+            controladores.Add("ControladorCondutor", new ControladorCondutor(repositorioCondutor,servicoCondutor,repositorioCliente));
 
             //Precos
-            IRepositorioPrecos repositorioPrecos = new RepositorioPrecosEmOrm(dbContext);
+            IRepositorioPrecos repositorioPrecos = new RepositorioPrecoEmOrm(dbContext);
             ValidadorPrecos validadorPrecos = new ValidadorPrecos();
             ServicoPrecos servicoPrecos = new ServicoPrecos();
             controladores.Add("ControladorPrecos", new ControladorPrecos());
@@ -144,15 +157,15 @@ namespace LocadoraDeVeiculos.WinFormsApp
             //taxas e servicos
             IRepositorioTaxasServicos repositorioTaxasServicos = new RepositorioTaxasServicosEmOrm(dbContext);
             ValidadorTaxasServicos validadorTaxasServicos = new ValidadorTaxasServicos();
-            ServicoTaxasServicos servicoTaxasServicos = new ServicoTaxasServicos();
-            controladores.Add("ControladorTaxasServicos", new ControladorTaxasServicos());
+            ServicoTaxasServicos servicoTaxasServicos = new ServicoTaxasServicos(repositorioTaxasServicos, validadorTaxasServicos);
+            controladores.Add("ControladorTaxasServicos", new ControladorTaxasServicos(repositorioTaxasServicos, servicoTaxasServicos));
 
             //Aluguel
             IRepositorioAluguel repositorioAluguel = new RepositorioAluguelEmOrm(dbContext);
             ValidadorAluguel validadorAluguel = new ValidadorAluguel();
             ServicoAluguel servicoAluguel = new ServicoAluguel();
             controladores.Add("ControladorAluguel", new ControladorAluguel());
-            */
+
         }
 
         public void AtualizarRodape()
