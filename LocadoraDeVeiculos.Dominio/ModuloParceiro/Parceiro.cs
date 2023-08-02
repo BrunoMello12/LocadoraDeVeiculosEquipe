@@ -11,6 +11,10 @@ namespace LocadoraDeVeiculos.Dominio.ModuloParceiro
     {
         public string Nome { get; set; }
 
+        public Parceiro()
+        {
+        }
+
         public Parceiro(Guid id, string nome)
         {
             Id = id;
