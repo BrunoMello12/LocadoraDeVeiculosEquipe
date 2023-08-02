@@ -1,29 +1,73 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using FluentResults;
+using LocadoraDeVeiculos.Dominio.ModuloCliente;
+using LocadoraDeVeiculos.Dominio.ModuloCondutor;
+using LocadoraDeVeiculos.WinFormsApp.Compartilhado;
 
 namespace LocadoraDeVeiculos.WinFormsApp.ModuloCondutor
 {
     public partial class TelaCondutorForm : Form
     {
-        public TelaCondutorForm()
+        private Condutor condutor;
+        public event GravarRegistroDelegate<Condutor> onGravarRegistro;
+
+        public TelaCondutorForm(List<Cliente> clientes)
         {
             InitializeComponent();
+
+            this.ConfigurarDialog();
+
+            CarregarClientes(clientes);
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        public Condutor ObterCondutor()
         {
+            condutor.Cliente = (Cliente)cbCliente.SelectedItem;
+            condutor.Cnh = txtCnh.Text;
+            condutor.Cpf = txtCpf.Text;
+            condutor.Email = txtEmail.Text;
+            condutor.Nome = txtNome.Text;
+            condutor.Telefone = txtTelefone.Text;
+            condutor.ClienteCondutor = chEhCondutor.Checked;
+            condutor.Validade = dateValidade.Value;
 
+            return condutor;
         }
 
-        private void TelaCondutorForm_Load(object sender, EventArgs e)
+        public void ConfigurarCondutor(Condutor condutor)
         {
+            txtEmail.Text = condutor.Email;
+            txtCpf.Text = condutor.Cpf;
+            txtCnh.Text = condutor.Cnh;
+            txtTelefone.Text = condutor.Telefone;
+            txtNome.Text = condutor.Nome;
+            cbCliente.SelectedItem = condutor.Cliente;
+            chEhCondutor.Checked = condutor.ClienteCondutor;
+            dateValidade.Value = condutor.Validade;
         }
+
+        private void btnGravar_Click(object sender, EventArgs e)
+        {
+            this.condutor = ObterCondutor();
+
+            Result resultado = onGravarRegistro(condutor);
+
+            if (resultado.IsFailed)
+            {
+                string erro = resultado.Errors[0].Message;
+
+                TelaPrincipalForm.Instancia.AtualizarRodape(erro);
+
+                DialogResult = DialogResult.None;
+            }
+        }
+
+        private void CarregarClientes(List<Cliente> clientes)
+        {
+            foreach (Cliente cliente in clientes)
+            {
+                cbCliente.Items.Add(cliente);
+            }
+        }
+
     }
 }

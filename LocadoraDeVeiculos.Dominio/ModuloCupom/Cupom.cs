@@ -1,10 +1,6 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Dominio.ModuloParceiro;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloCupom
 {
@@ -17,6 +13,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCupom
         public DateTime DataValidade { get; set; }
 
         public Parceiro Parceiro { get; set; }
+
+        public List<Cliente> ClientesJaUtilizados { get; set; }
 
         public Cupom()
         {

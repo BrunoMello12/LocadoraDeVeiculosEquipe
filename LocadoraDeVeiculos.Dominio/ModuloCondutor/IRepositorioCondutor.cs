@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
 {
-    internal class IRepositorioCondutor
+    public interface IRepositorioCondutor : IRepositorio<Condutor>
     {
+        public Condutor SelecionarPorNome(string nome);
     }
 }

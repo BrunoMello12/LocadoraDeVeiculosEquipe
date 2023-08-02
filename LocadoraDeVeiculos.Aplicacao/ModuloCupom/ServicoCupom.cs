@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloCupom;
+using LocadoraDeVeiculos.Dominio.ModuloGrupoAutomoveis;
 
 namespace LocadoraDeVeiculos.Aplicacao.ModuloCupom
 {
@@ -71,8 +72,8 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCupom
         {
             Log.Debug("Tentando excluir Cupom...{@d}", cupom);
 
-            //try
-            //{
+            try
+            {
                 bool cupomExiste = repositorioCupom.Existe(cupom);
 
                 if (cupomExiste == false)
@@ -87,24 +88,24 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCupom
                 Log.Debug("Cupom {cupomId} excluído com sucesso", cupom.Id);
 
                 return Result.Ok();
-            //}
-            //catch (SqlException ex)
-            //{
-            //    List<string> erros = new List<string>();
+            }
+            catch (SqlException ex)
+            {
+                List<string> erros = new List<string>();
 
-            //    string msgErro;
+                string msgErro;
 
-            //    if (ex.Message.Contains("FK_TBCupom_TBCobranca"))
-            //        msgErro = "Este plano de cobrança está relacionado com um aluguel e não pode ser excluído";
-            //    else
-            //        msgErro = "Falha ao tentar excluir plano de cobrança";
+                if (ex.Message.Contains("FK_TBCupom_TBAluguel"))
+                    msgErro = "Este cupom está relacionado com um aluguel e não pode ser excluído";
+                else
+                    msgErro = "Falha ao tentar excluir cupom";
 
-            //    erros.Add(msgErro);
+                erros.Add(msgErro);
 
-            //    Log.Error(ex, msgErro + " {cobrancaId}", cupom.Id);
+                Log.Error(ex, msgErro + " {cupomId}", cupom.Id);
 
-            //    return Result.Fail(erros);
-            //}
+                return Result.Fail(erros);
+            }
         }
 
         private List<string> ValidarCupom(Cupom cupom)
@@ -116,12 +117,29 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCupom
             if (resultadoValidacao != null)
                 erros.AddRange(resultadoValidacao.Errors.Select(x => x.ErrorMessage));
 
+            if (NomeDuplicado(cupom))
+                erros.Add($"Este nome '{cupom.Nome}' já está sendo utilizado");
+
             foreach (string erro in erros)
             {
                 Log.Warning(erro);
             }
 
             return erros;
+        }
+
+        private bool NomeDuplicado(Cupom cupom)
+        {
+            Cupom cupomEncontrado = repositorioCupom.SelecionarPorNome(cupom.Nome);
+
+            if (cupomEncontrado != null &&
+            cupomEncontrado.Id != cupom.Id &&
+                cupomEncontrado.Nome == cupom.Nome)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

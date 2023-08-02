@@ -1,10 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
 {
@@ -25,6 +20,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
         public string Cnh { get; set; }
 
         public DateTime Validade { get; set; }
+
+        public Condutor()
+        {
+            
+        }
 
         public Condutor(Cliente cliente, bool clienteCondutor, string nome, string email, string telefone, string cpf, string cnh, DateTime validade)
         {
