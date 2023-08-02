@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LocadoraDeVeiculos.Dominio.ModuloCondutor;
+using LocadoraDeVeiculos.Infra.Orm.Compartilhado;
 
 namespace LocadoraDeVeiculos.Infra.Orm.ModuloCondutor
 {
-    internal class RepositorioCondutorEmOrm
+    public class RepositorioCondutorEmOrm : RepositorioBaseEmOrm<Condutor>, IRepositorioCondutor
     {
+        public RepositorioCondutorEmOrm(LocadoraDeVeiculosDbContext dbContext) : base(dbContext)
+        {
+        }
+
+        public Condutor SelecionarPorNome(string nome)
+        {
+            return registros.FirstOrDefault(x => x.Nome == nome);
+        }
     }
 }

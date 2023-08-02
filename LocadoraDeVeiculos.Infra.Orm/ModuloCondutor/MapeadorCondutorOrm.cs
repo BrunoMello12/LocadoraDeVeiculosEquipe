@@ -1,12 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LocadoraDeVeiculos.Dominio.ModuloCondutor;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace LocadoraDeVeiculos.Infra.Orm.ModuloCondutor
 {
-    internal class MapeadorCondutorOrm
+    public class MapeadorCondutorOrm : IEntityTypeConfiguration<Condutor>
     {
+        public void Configure(EntityTypeBuilder<Condutor> builder)
+        {
+            builder.Property(x => x.Id).ValueGeneratedOnAdd().IsRequired();
+            builder.Property(x => x.Cnh).IsRequired();
+            builder.Property(x => x.Telefone).IsRequired();
+            builder.Property(x => x.Cpf).IsRequired();
+            builder.Property(x => x.Email).IsRequired();
+            builder.Property(x => x.Validade).IsRequired();
+
+            builder.HasOne(x => x.Cliente)
+                .WithOne()
+                .IsRequired()
+                .HasConstraintName("FK_TBCondutor_TBCliente")
+                .OnDelete(DeleteBehavior.NoAction);
+        }
     }
 }
