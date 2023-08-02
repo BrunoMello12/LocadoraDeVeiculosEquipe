@@ -12,6 +12,7 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCliente
         public TelaClienteForm()
         {
             InitializeComponent();
+            this.ConfigurarDialog();
         }
 
         public Cliente ObterCliente()
@@ -37,6 +38,7 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCliente
 
         public void ConfigurarCliente(Cliente cliente)
         {
+            this.cliente = cliente;
             txtBairro.Text = cliente.Bairro;
             txtCidade.Text = cliente.Cidade;
             txtCnpj.Text = cliente.Cnpj;

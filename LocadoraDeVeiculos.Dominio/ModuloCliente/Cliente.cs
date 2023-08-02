@@ -34,37 +34,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             
         }
 
-        public Cliente(string nome, string email, string telefone, TipoClienteEnum tipoCliente, string cpf, string cnpj, string estado, string cidade, string bairro, string rua, int numeroCasa)
-        {
-            Nome = nome;
-            Email = email;
-            Telefone = telefone;
-            TipoCliente = tipoCliente;
-            Cpf = cpf;
-            Cnpj = cnpj;
-            Estado = estado;
-            Cidade = cidade;
-            Bairro = bairro;
-            Rua = rua;
-            NumeroCasa = numeroCasa;
-        }
-
-        public Cliente(string nome, string email, string telefone, TipoClienteEnum tipoCliente, string cpf, string estado, string cidade, string bairro, string rua, int numeroCasa)
-        {
-            Nome = nome;
-            Email = email;
-            Telefone = telefone;
-            TipoCliente = tipoCliente;
-            Cpf = cpf;
-            Estado = estado;
-            Cidade = cidade;
-            Bairro = bairro;
-            Rua = rua;
-            NumeroCasa = numeroCasa;
-        }
-
-        
-
         public override void Atualizar(Cliente registro)
         {
             Nome = registro.Nome;
@@ -77,6 +46,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             Bairro = registro.Bairro;
             Rua = registro.Rua;
             NumeroCasa = registro.NumeroCasa;   
+        }
+
+        public override string ToString()
+        {
+            return Nome;
         }
     }
 }

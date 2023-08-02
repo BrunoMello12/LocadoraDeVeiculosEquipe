@@ -8,12 +8,12 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
         {
             RuleFor(x => x.Cliente)
                 .NotNull()
-                .NotEmpty();
+                .NotEmpty().WithMessage("O campo Cliente é obrigatório");
 
             RuleFor(x => x.Email)
                 .NotEmpty()
                 .NotNull()
-                .EmailAddress();
+                .EmailAddress().WithMessage("O campo Email é obrigatório"); ;
 
             RuleFor(x => x.Cpf)
                 .NotEmpty()

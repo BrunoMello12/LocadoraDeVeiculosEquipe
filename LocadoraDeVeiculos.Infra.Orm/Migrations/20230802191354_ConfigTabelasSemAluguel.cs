@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace LocadoraDeVeiculos.Infra.Orm.Migrations
 {
     /// <inheritdoc />
-    public partial class MigracaoInicial : Migration
+    public partial class ConfigTabelasSemAluguel : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -160,8 +160,7 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ClienteId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ClienteId = table.Column<int>(type: "int", nullable: false),
+                    ClienteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ClienteCondutor = table.Column<bool>(type: "bit", nullable: false),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -175,7 +174,7 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
                     table.PrimaryKey("PK_TBCondutor", x => x.Id);
                     table.ForeignKey(
                         name: "FK_TBCondutor_TBCliente",
-                        column: x => x.ClienteId1,
+                        column: x => x.ClienteId,
                         principalTable: "TBCliente",
                         principalColumn: "Id");
                 });
@@ -196,9 +195,9 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
                 column: "GrupoAutomoveisId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TBCondutor_ClienteId1",
+                name: "IX_TBCondutor_ClienteId",
                 table: "TBCondutor",
-                column: "ClienteId1");
+                column: "ClienteId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TBCupom_ParceiroId",

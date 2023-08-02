@@ -27,8 +27,8 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloAutomovel
             automovel.Cor = txtCor.Text;
             automovel.Modelo = txtModelo.Text;
             automovel.CapacidadeLitros = Convert.ToDecimal(txtCapacidadeEmLitros.Text);
-            automovel.GrupoDoAutomovel = (GrupoAutomoveis)cbGrpAutomoveis.SelectedValue;
-            automovel.TipoCombustivel = (TipoCombustivelEnum)cbTipoCombustivel.SelectedValue;
+            automovel.GrupoDoAutomovel = (GrupoAutomoveis)cbGrpAutomoveis.SelectedItem;
+            automovel.TipoCombustivel = (TipoCombustivelEnum)cbTipoCombustivel.SelectedItem;
 
             return automovel;
         }
@@ -42,8 +42,8 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloAutomovel
             txtCor.Text = automovel.Cor;
             txtModelo.Text = automovel.Modelo;
             txtCapacidadeEmLitros.Text = automovel.CapacidadeLitros.ToString();
-            cbGrpAutomoveis.SelectedValue = automovel.GrupoDoAutomovel;
-            cbTipoCombustivel.SelectedValue = automovel.TipoCombustivel;
+            cbGrpAutomoveis.SelectedItem = automovel.GrupoDoAutomovel;
+            cbTipoCombustivel.SelectedItem = automovel.TipoCombustivel;
         }
 
         private void CarregarTipoCombustivel()

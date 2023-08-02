@@ -35,6 +35,7 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCondutor
 
         public void ConfigurarCondutor(Condutor condutor)
         {
+            this.condutor = condutor;
             txtEmail.Text = condutor.Email;
             txtCpf.Text = condutor.Cpf;
             txtCnh.Text = condutor.Cnh;

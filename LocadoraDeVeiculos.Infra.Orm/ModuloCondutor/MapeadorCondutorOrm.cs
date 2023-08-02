@@ -15,6 +15,8 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloCondutor
             builder.Property(x => x.Cpf).IsRequired();
             builder.Property(x => x.Email).IsRequired();
             builder.Property(x => x.Validade).IsRequired();
+            builder.Property(x => x.Nome).IsRequired();
+            builder.Property(x => x.ClienteCondutor);
 
             builder.HasOne(x => x.Cliente)
                 .WithMany(x => x.Condutores)

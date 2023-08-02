@@ -3,7 +3,7 @@ using LocadoraDeVeiculos.Dominio.ModuloAluguel;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloAutomovel
 {
-    public class ValidadorAutomovel : AbstractValidator<Automovel>
+    public class ValidadorAutomovel : AbstractValidator<Automovel>, IValidadorAutomovel
     {
         public ValidadorAutomovel()
         {

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocadoraDeVeiculos.Infra.Orm.Migrations
 {
     [DbContext(typeof(LocadoraDeVeiculosDbContext))]
-    [Migration("20230802170932_MigracaoInicial")]
-    partial class MigracaoInicial
+    [Migration("20230802191354_ConfigTabelasSemAluguel")]
+    partial class ConfigTabelasSemAluguel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -161,10 +161,7 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
                     b.Property<bool>("ClienteCondutor")
                         .HasColumnType("bit");
 
-                    b.Property<int>("ClienteId")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("ClienteId1")
+                    b.Property<Guid>("ClienteId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Cnh")
@@ -192,7 +189,7 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClienteId1");
+                    b.HasIndex("ClienteId");
 
                     b.ToTable("TBCondutor", (string)null);
                 });
@@ -327,7 +324,7 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
                 {
                     b.HasOne("LocadoraDeVeiculos.Dominio.ModuloCliente.Cliente", "Cliente")
                         .WithMany("Condutores")
-                        .HasForeignKey("ClienteId1")
+                        .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired()
                         .HasConstraintName("FK_TBCondutor_TBCliente");
