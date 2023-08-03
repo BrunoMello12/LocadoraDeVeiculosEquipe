@@ -7,7 +7,6 @@ using LocadoraDeVeiculos.Aplicacao.ModuloCupom;
 using LocadoraDeVeiculos.Aplicacao.ModuloFuncionario;
 using LocadoraDeVeiculos.Aplicacao.ModuloGrupoAutomoveis;
 using LocadoraDeVeiculos.Aplicacao.ModuloParceiro;
-using LocadoraDeVeiculos.Aplicacao.ModuloPrecos;
 using LocadoraDeVeiculos.Aplicacao.ModuloTaxasServicos;
 using LocadoraDeVeiculos.Dominio.ModuloAluguel;
 using LocadoraDeVeiculos.Dominio.ModuloAutomovel;
@@ -18,7 +17,6 @@ using LocadoraDeVeiculos.Dominio.ModuloCupom;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoAutomoveis;
 using LocadoraDeVeiculos.Dominio.ModuloParceiro;
-using LocadoraDeVeiculos.Dominio.ModuloPrecos;
 using LocadoraDeVeiculos.Dominio.ModuloTaxasServicos;
 using LocadoraDeVeiculos.Infra.Orm.Compartilhado;
 using LocadoraDeVeiculos.Infra.Orm.ModuloAluguel;
@@ -30,7 +28,6 @@ using LocadoraDeVeiculos.Infra.Orm.ModuloCupom;
 using LocadoraDeVeiculos.Infra.Orm.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.Orm.ModuloGrupoAutomoveis;
 using LocadoraDeVeiculos.Infra.Orm.ModuloParceiro;
-using LocadoraDeVeiculos.Infra.Orm.ModuloPrecos;
 using LocadoraDeVeiculos.Infra.Orm.ModuloTaxasServicos;
 using LocadoraDeVeiculos.WinFormsApp.Compartilhado;
 using LocadoraDeVeiculos.WinFormsApp.ModuloAluguel;
@@ -42,7 +39,6 @@ using LocadoraDeVeiculos.WinFormsApp.ModuloCupom;
 using LocadoraDeVeiculos.WinFormsApp.ModuloFuncionario;
 using LocadoraDeVeiculos.WinFormsApp.ModuloGrupoAutomoveis;
 using LocadoraDeVeiculos.WinFormsApp.ModuloParceiro;
-using LocadoraDeVeiculos.WinFormsApp.ModuloPrecos;
 using LocadoraDeVeiculos.WinFormsApp.ModuloTaxasServicos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -128,7 +124,7 @@ namespace LocadoraDeVeiculos.WinFormsApp
             IRepositorioAutomovel repositorioAutomovel = new RepositorioAutomovelEmOrm(dbContext);
             ValidadorAutomovel validadorAutovel = new ValidadorAutomovel();
             ServicoAutomovel servicoAutomovel = new ServicoAutomovel(repositorioAutomovel, validadorAutovel);
-            controladores.Add("ControladorAutomovel", new ControladorAutomovel(repositorioAutomovel,repositorioGrupoAutomoveis,servicoAutomovel));
+            controladores.Add("ControladorAutomovel", new ControladorAutomovel(repositorioAutomovel, repositorioGrupoAutomoveis, servicoAutomovel));
 
             //parceiro
             IRepositorioParceiro repositorioParceiro = new RepositorioParceiroEmOrm(dbContext);
@@ -148,13 +144,7 @@ namespace LocadoraDeVeiculos.WinFormsApp
             IRepositorioCondutor repositorioCondutor = new RepositorioCondutorEmOrm(dbContext);
             ValidadorCondutor validadorCondutor = new ValidadorCondutor();
             ServicoCondutor servicoCondutor = new ServicoCondutor(repositorioCondutor, validadorCondutor);
-            controladores.Add("ControladorCondutor", new ControladorCondutor(repositorioCondutor,servicoCondutor,repositorioCliente));
-
-            //Precos
-            IRepositorioPrecos repositorioPrecos = new RepositorioPrecoEmOrm(dbContext);
-            ValidadorPrecos validadorPrecos = new ValidadorPrecos();
-            ServicoPrecos servicoPrecos = new ServicoPrecos();
-            controladores.Add("ControladorPrecos", new ControladorPrecos());
+            controladores.Add("ControladorCondutor", new ControladorCondutor(repositorioCondutor, servicoCondutor, repositorioCliente));
 
             //taxas e servicos
             IRepositorioTaxasServicos repositorioTaxasServicos = new RepositorioTaxasServicosEmOrm(dbContext);
@@ -253,6 +243,11 @@ namespace LocadoraDeVeiculos.WinFormsApp
             controlador.Excluir();
         }
 
+        private void btnPrecos_Click(object sender, EventArgs e)
+        {
+            controlador.Precos();
+        }
+
         private void funcionárioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal(controladores["ControladorFuncionario"]);
@@ -271,11 +266,6 @@ namespace LocadoraDeVeiculos.WinFormsApp
         private void parceiroToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal(controladores["ControladorParceiro"]);
-        }
-
-        private void preçosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ConfigurarTelaPrincipal(controladores["ControladorPrecos"]);
         }
 
         private void aluguelToolStripMenuItem1_Click(object sender, EventArgs e)

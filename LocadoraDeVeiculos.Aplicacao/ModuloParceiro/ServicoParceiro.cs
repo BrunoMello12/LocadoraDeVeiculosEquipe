@@ -1,5 +1,4 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloParceiro;
-using LocadoraDeVeiculos.Dominio.ModuloParceiro;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +25,7 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloParceiro
             List<string> erros = ValidarParceiro(parceiro);
 
             if (erros.Count() > 0)
-                return Result.Fail(erros); //cenário 2
+                return Result.Fail(erros);
 
             try
             {
@@ -34,7 +33,7 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloParceiro
 
                 Log.Debug("Parceiro {ParceiroId} inserida com sucesso", parceiro.Id);
 
-                return Result.Ok(); //cenário 1
+                return Result.Ok();
             }
             catch (Exception exc)
             {
@@ -42,7 +41,7 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloParceiro
 
                 Log.Error(exc, msgErro + "{@d}", parceiro);
 
-                return Result.Fail(msgErro); //cenário 3
+                return Result.Fail(msgErro); 
             }
         }
 

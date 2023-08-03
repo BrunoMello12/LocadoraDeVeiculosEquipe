@@ -33,5 +33,10 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloAluguel
         {
             throw new NotImplementedException();
         }
+
+        public override void Precos()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

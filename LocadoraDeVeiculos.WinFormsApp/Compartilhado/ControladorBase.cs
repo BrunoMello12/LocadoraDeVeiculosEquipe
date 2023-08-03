@@ -16,6 +16,11 @@ namespace LocadoraDeVeiculos.WinFormsApp.Compartilhado
 
         public abstract void Excluir();
 
+        public virtual void Precos()
+        {
+
+        }
+
         public abstract UserControl ObtemListagem();
 
         public abstract ConfiguracaoToolBoxBase ObtemConfiguracaoToolbox();
@@ -24,5 +29,6 @@ namespace LocadoraDeVeiculos.WinFormsApp.Compartilhado
         {
             return mensagemRodape;
         }
+
     }
 }

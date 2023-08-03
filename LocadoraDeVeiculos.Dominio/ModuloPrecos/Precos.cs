@@ -1,18 +1,29 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
-using LocadoraDeVeiculos.Dominio.ModuloGrupoAutomoveis;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloPrecos
 {
     public class Precos : EntidadeBase<Precos>
     {
+        public decimal Gasolina { get; set; }
+        public decimal Gas { get; set; }
+        public decimal Diesel { get; set; }
+        public decimal Alcool { get; set; }
+
+        public Precos(Guid id, decimal gasolina, decimal gas, decimal diesel, decimal alcool)
+        {
+            this.Id = id;
+            Gasolina = gasolina;
+            Gas = gas;
+            Diesel = diesel;
+            Alcool = alcool;
+        }
+
         public override void Atualizar(Precos registro)
         {
-            throw new NotImplementedException();
+            Gasolina = registro.Gasolina;
+            Gas = registro.Gas;
+            Diesel = registro.Diesel;
+            Alcool = registro.Alcool;
         }
     }
 }

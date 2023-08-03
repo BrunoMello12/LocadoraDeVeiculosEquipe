@@ -1,10 +1,4 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
-using LocadoraDeVeiculos.Dominio.ModuloTaxasServicos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LocadoraDeVeiculos.Dominio.ModuloTaxasServicos;
 
 namespace LocadoraDeVeiculos.Aplicacao.ModuloTaxasServicos
 {
@@ -26,7 +20,7 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloTaxasServicos
             List<string> erros = ValidarTaxasServicos(taxasServicos);
 
             if (erros.Count() > 0)
-                return Result.Fail(erros); //cenário 2
+                return Result.Fail(erros);
 
             try
             {
@@ -34,7 +28,7 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloTaxasServicos
 
                 Log.Debug("Serviço {TaxasServicosId} inserida com sucesso", taxasServicos.Id);
 
-                return Result.Ok(); //cenário 1
+                return Result.Ok(); 
             }
             catch (Exception exc)
             {
@@ -42,7 +36,7 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloTaxasServicos
 
                 Log.Error(exc, msgErro + "{@d}", taxasServicos);
 
-                return Result.Fail(msgErro); //cenário 3
+                return Result.Fail(msgErro); 
             }
         }
 
