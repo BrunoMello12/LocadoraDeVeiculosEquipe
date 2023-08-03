@@ -19,6 +19,7 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloAutomovel
     {
         private IRepositorioGrupoAutomoveis repositorioGrupoAutomoveis;
         private IRepositorioAutomovel repositorioAutomovel;
+        private RepositorioPrecosJson repositorioPrecosJson;
 
         private ServicoAutomovel servicoAutomovel;
 
@@ -27,11 +28,13 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloAutomovel
         public ControladorAutomovel(
             IRepositorioAutomovel repositorioAutomovel,
             IRepositorioGrupoAutomoveis repositorioGrupoAutomoveis,
-            ServicoAutomovel servicoAutomovel)
+            ServicoAutomovel servicoAutomovel,
+            RepositorioPrecosJson repositorioPrecosJson)
         {
             this.repositorioAutomovel = repositorioAutomovel;
             this.repositorioGrupoAutomoveis = repositorioGrupoAutomoveis;
             this.servicoAutomovel = servicoAutomovel;
+            this.repositorioPrecosJson = repositorioPrecosJson;
         }
 
         public override void Inserir()
@@ -136,6 +139,27 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloAutomovel
             mensagemRodape = string.Format("Visualizando {0} automoveis{1}", automoveis.Count, automoveis.Count == 1 ? "" : "s");
 
             TelaPrincipalForm.Instancia.AtualizarRodape(mensagemRodape);
+        }
+
+        public override void Precos()
+        {
+            Precos registroPreco = repositorioPrecosJson.ObterRegistros().FirstOrDefault();
+
+            if (registroPreco == null)
+            {
+                registroPreco = new Precos(Guid.NewGuid(), 0, 0, 0, 0);
+            }
+
+            TelaPrecosForm tela = new TelaPrecosForm(registroPreco);
+            tela.ConfigurarPrecos(registroPreco);
+
+            DialogResult opcaoEscolhida = tela.ShowDialog();
+
+            if (opcaoEscolhida == DialogResult.OK)
+            {
+                Precos precoEscolhido = tela.ObterPrecos();
+                repositorioPrecosJson.Salvar(registroPreco);
+            }
         }
     }
 }

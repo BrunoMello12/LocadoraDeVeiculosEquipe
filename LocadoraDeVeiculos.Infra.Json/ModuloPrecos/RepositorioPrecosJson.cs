@@ -26,6 +26,8 @@ namespace LocadoraDeVeiculos.Infra.Json.ModuloPrecos
             {
                 registros.Add(registro);
             }
+
+            contextoDados.GravarDados();
         }
 
         public List<Precos> ObterRegistros()

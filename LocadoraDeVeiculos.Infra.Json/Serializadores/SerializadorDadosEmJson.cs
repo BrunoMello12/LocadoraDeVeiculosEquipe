@@ -1,16 +1,11 @@
 ﻿using LocadoraDeVeiculos.Infra.Json.ModuloPrecos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.Json.Serializadores
 {
     public class SerializadorDadosEmJson
     {
-        private const string arquivo = @"C:\temp\dados.json";
+        private const string arquivo = @"E:\Arquivos\LocadoraWithGuys\Precos.json";
 
         public ContextoDadosPrecos CarregarDadosDoArquivo()
         {

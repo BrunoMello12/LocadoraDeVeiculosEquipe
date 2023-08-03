@@ -6,16 +6,15 @@ using LocadoraDeVeiculos.Dominio.Compartilhado;
 
 namespace LocadoraDeVeiculos.Infra.Json.ModuloPrecos
 {
+    [Serializable]
     public class ContextoDadosPrecos : IContextoPersistencia
-    {
-         
+    {         
         private readonly SerializadorDadosEmJson serializador;
 
         public ContextoDadosPrecos()
         {
             Precos = new List<Precos>();
         }
-
 
         public ContextoDadosPrecos(SerializadorDadosEmJson serializador) : this()
         {

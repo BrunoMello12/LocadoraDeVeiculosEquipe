@@ -2,6 +2,7 @@
 
 namespace LocadoraDeVeiculos.Dominio.ModuloPrecos
 {
+    [Serializable]
     public class Precos : EntidadeBase<Precos>
     {
         public decimal Gasolina { get; set; }

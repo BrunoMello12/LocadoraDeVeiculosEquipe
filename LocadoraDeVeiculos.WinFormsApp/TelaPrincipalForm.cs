@@ -19,6 +19,7 @@ using LocadoraDeVeiculos.Dominio.ModuloGrupoAutomoveis;
 using LocadoraDeVeiculos.Dominio.ModuloParceiro;
 using LocadoraDeVeiculos.Dominio.ModuloTaxasServicos;
 using LocadoraDeVeiculos.Infra.Json.ModuloPrecos;
+using LocadoraDeVeiculos.Infra.Json.Serializadores;
 using LocadoraDeVeiculos.Infra.Orm.Compartilhado;
 using LocadoraDeVeiculos.Infra.Orm.ModuloAluguel;
 using LocadoraDeVeiculos.Infra.Orm.ModuloAutomovel;
@@ -123,7 +124,11 @@ namespace LocadoraDeVeiculos.WinFormsApp
             IRepositorioAutomovel repositorioAutomovel = new RepositorioAutomovelEmOrm(dbContext);
             ValidadorAutomovel validadorAutovel = new ValidadorAutomovel();
             ServicoAutomovel servicoAutomovel = new ServicoAutomovel(repositorioAutomovel, validadorAutovel);
-            controladores.Add("ControladorAutomovel", new ControladorAutomovel(repositorioAutomovel, repositorioGrupoAutomoveis, servicoAutomovel));
+
+            SerializadorDadosEmJson serializadorDadosEmJson = new SerializadorDadosEmJson();
+            ContextoDadosPrecos contextoDados = new ContextoDadosPrecos(serializadorDadosEmJson);
+            RepositorioPrecosJson repositorioPrecosJson = new RepositorioPrecosJson(contextoDados);
+            controladores.Add("ControladorAutomovel", new ControladorAutomovel(repositorioAutomovel, repositorioGrupoAutomoveis, servicoAutomovel, repositorioPrecosJson));
 
             //parceiro
             IRepositorioParceiro repositorioParceiro = new RepositorioParceiroEmOrm(dbContext);
@@ -136,8 +141,6 @@ namespace LocadoraDeVeiculos.WinFormsApp
             ValidadorCupom validadorcupom = new ValidadorCupom();
             ServicoCupom servicoCupom = new ServicoCupom(repositorioCupom, validadorcupom);
             controladores.Add("ControladorCupom", new ControladorCupom(servicoCupom, repositorioCupom, repositorioParceiro));
-
-            //todos feitos ^^^^^^^^
 
             //condutor
             IRepositorioCondutor repositorioCondutor = new RepositorioCondutorEmOrm(dbContext);
@@ -155,7 +158,7 @@ namespace LocadoraDeVeiculos.WinFormsApp
             IRepositorioAluguel repositorioAluguel = new RepositorioAluguelEmOrm(dbContext);
             ValidadorAluguel validadorAluguel = new ValidadorAluguel();
             ServicoAluguel servicoAluguel = new ServicoAluguel();
-            RepositorioPrecosJson repositorioPrecosJson = new RepositorioPrecosJson(new ContextoDadosPrecos());
+            //RepositorioPrecosJson repositorioPrecosJson = new RepositorioPrecosJson(new ContextoDadosPrecos());
             controladores.Add("ControladorAluguel", new ControladorAluguel(repositorioPrecosJson, repositorioAluguel));
 
         }
