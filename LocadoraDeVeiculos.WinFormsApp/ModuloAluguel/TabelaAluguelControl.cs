@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LocadoraDeVeiculos.Dominio.ModuloAluguel;
+using LocadoraDeVeiculos.Dominio.ModuloParceiro;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,16 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloAluguel
         public TabelaAluguelControl()
         {
             InitializeComponent();
+        }
+
+        public void AtualizarRegistros(List<Aluguel> alugueis)
+        {
+            grid.Rows.Clear();
+
+            foreach (Aluguel aluguel in alugueis)
+            {
+                grid.Rows.Add(aluguel.Id);
+            }
         }
     }
 }

@@ -18,6 +18,7 @@ using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoAutomoveis;
 using LocadoraDeVeiculos.Dominio.ModuloParceiro;
 using LocadoraDeVeiculos.Dominio.ModuloTaxasServicos;
+using LocadoraDeVeiculos.Infra.Json.ModuloPrecos;
 using LocadoraDeVeiculos.Infra.Orm.Compartilhado;
 using LocadoraDeVeiculos.Infra.Orm.ModuloAluguel;
 using LocadoraDeVeiculos.Infra.Orm.ModuloAutomovel;
@@ -154,7 +155,8 @@ namespace LocadoraDeVeiculos.WinFormsApp
             IRepositorioAluguel repositorioAluguel = new RepositorioAluguelEmOrm(dbContext);
             ValidadorAluguel validadorAluguel = new ValidadorAluguel();
             ServicoAluguel servicoAluguel = new ServicoAluguel();
-            controladores.Add("ControladorAluguel", new ControladorAluguel());
+            RepositorioPrecosJson repositorioPrecosJson = new RepositorioPrecosJson(new ContextoDadosPrecos());
+            controladores.Add("ControladorAluguel", new ControladorAluguel(repositorioPrecosJson, repositorioAluguel));
 
         }
 

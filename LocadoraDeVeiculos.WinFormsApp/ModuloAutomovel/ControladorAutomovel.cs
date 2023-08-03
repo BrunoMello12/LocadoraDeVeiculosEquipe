@@ -2,7 +2,10 @@
 using LocadoraDeVeiculos.Aplicacao.ModuloAutomovel;
 using LocadoraDeVeiculos.Dominio.ModuloAutomovel;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoAutomoveis;
+using LocadoraDeVeiculos.Dominio.ModuloPrecos;
+using LocadoraDeVeiculos.Infra.Json.ModuloPrecos;
 using LocadoraDeVeiculos.WinFormsApp.Compartilhado;
+using LocadoraDeVeiculos.WinFormsApp.ModuloPrecos;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Drawing2D;

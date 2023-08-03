@@ -39,7 +39,7 @@
             grid.Location = new Point(0, 0);
             grid.Name = "grid";
             grid.RowTemplate.Height = 25;
-            grid.Size = new Size(344, 286);
+            grid.Size = new Size(414, 328);
             grid.TabIndex = 0;
             // 
             // TabelaParceiroControl
@@ -48,7 +48,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(grid);
             Name = "TabelaParceiroControl";
-            Size = new Size(344, 286);
+            Size = new Size(414, 328);
             ((System.ComponentModel.ISupportInitialize)grid).EndInit();
             ResumeLayout(false);
         }

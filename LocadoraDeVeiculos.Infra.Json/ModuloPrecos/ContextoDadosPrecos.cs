@@ -1,60 +1,47 @@
 ﻿using System.Text.Json.Serialization;
 using System.Text.Json;
 using LocadoraDeVeiculos.Dominio.ModuloPrecos;
+using LocadoraDeVeiculos.Infra.Json.Serializadores;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 
 namespace LocadoraDeVeiculos.Infra.Json.ModuloPrecos
 {
-    public class ContextoDadosPrecos
+    public class ContextoDadosPrecos : IContextoPersistencia
     {
-        private const string NOME_ARQUIVO = "Precos\\LocadoraDeVeiculos.json";
-
-        public Precos preco;
+         
+        private readonly SerializadorDadosEmJson serializador;
 
         public ContextoDadosPrecos()
         {
-            preco = new Precos();
+            Precos = new List<Precos>();
         }
 
-        public ContextoDadosPrecos(bool carregarDados) : this()
+
+        public ContextoDadosPrecos(SerializadorDadosEmJson serializador) : this()
         {
-            if (carregarDados)
-                CarregarDoArquivoJson();
+            this.serializador = serializador;
+
+            CarregarDados();
         }
 
-        public void GravarEmArquivoJson()
+        public List<Precos> Precos { get; set; }
+
+        public void DesfazerAlteracoes()
         {
-            JsonSerializerOptions config = ObterConfiguracoes();
-
-            string registrosJson = JsonSerializer.Serialize(this, config);
-
-            File.WriteAllText(NOME_ARQUIVO, registrosJson);
+            CarregarDados();
         }
 
-        private void CarregarDoArquivoJson()
+        public void GravarDados()
         {
-            JsonSerializerOptions config = ObterConfiguracoes();
-
-            if (File.Exists(NOME_ARQUIVO))
-            {
-                string registrosJson = File.ReadAllText(NOME_ARQUIVO);
-
-                if (registrosJson.Length > 0)
-                {
-                    ContextoDadosPrecos ctx = JsonSerializer.Deserialize<ContextoDadosPrecos>(registrosJson, config);
-
-                    this.preco = ctx.preco;
-                }
-            }
+            serializador.GravarDadosEmArquivo(this);
         }
 
-        private static JsonSerializerOptions ObterConfiguracoes()
+        private void CarregarDados()
         {
-            JsonSerializerOptions opcoes = new JsonSerializerOptions();
-            opcoes.IncludeFields = true;
-            opcoes.WriteIndented = true;
-            opcoes.ReferenceHandler = ReferenceHandler.Preserve;
+            var ctx = serializador.CarregarDadosDoArquivo();
 
-            return opcoes;
+            if (ctx.Precos.Any())
+                this.Precos.AddRange(ctx.Precos);
         }
     }
 }

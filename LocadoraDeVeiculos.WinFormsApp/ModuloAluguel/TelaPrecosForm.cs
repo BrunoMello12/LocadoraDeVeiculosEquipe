@@ -9,10 +9,11 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloPrecos
         private Precos precos;
         public event GravarRegistroDelegate<Precos> onGravarRegistro;
 
-        public TelaPrecosForm()
+        public TelaPrecosForm(Precos registro)
         {
             InitializeComponent();
             this.ConfigurarDialog();
+            this.precos = registro;
         }
 
         public Precos ObterPrecos()
