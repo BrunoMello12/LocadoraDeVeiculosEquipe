@@ -12,7 +12,7 @@ namespace LocadoraDeVeiculos.Infra.Json.ModuloPrecos
 
         public ContextoDadosPrecos()
         {
-            preco = new Precos;
+            preco = new Precos();
         }
 
         public ContextoDadosPrecos(bool carregarDados) : this()

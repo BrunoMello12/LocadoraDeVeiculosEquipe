@@ -50,8 +50,6 @@ namespace LocadoraDeVeiculos.WinFormsApp
         private Dictionary<string, ControladorBase> controladores;
         private ControladorBase controlador;
 
-        //Push
-
         public TelaPrincipalForm()
         {
 

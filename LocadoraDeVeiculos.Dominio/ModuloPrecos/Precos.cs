@@ -9,6 +9,10 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPrecos
         public decimal Diesel { get; set; }
         public decimal Alcool { get; set; }
 
+        public Precos()
+        {
+        }
+
         public Precos(Guid id, decimal gasolina, decimal gas, decimal diesel, decimal alcool)
         {
             this.Id = id;
