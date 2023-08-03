@@ -5,7 +5,7 @@ namespace LocadoraDeVeiculos.Infra.Json.Serializadores
 {
     public class SerializadorDadosEmJson
     {
-        private const string arquivo = @"E:\Arquivos\LocadoraWithGuys\Precos.json";
+        private const string arquivo = @"C:\temp\Precos.Json";
 
         public ContextoDadosPrecos CarregarDadosDoArquivo()
         {
