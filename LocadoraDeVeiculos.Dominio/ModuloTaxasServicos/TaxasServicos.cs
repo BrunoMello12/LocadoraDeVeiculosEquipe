@@ -12,6 +12,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloTaxasServicos
     {
         public string Nome { get; set; }
         public decimal Preco { get; set; }
+        public bool PrecoFixo { get; set; }
+        public bool PrecoDiaria { get; set; }
 
         public TaxasServicos()
         {

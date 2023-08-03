@@ -18,6 +18,15 @@ namespace LocadoraDeVeiculos.Dominio.ModuloTaxasServicos
                 .NotNull()
                 .MinimumLength(3)
                 .NaoPodeCaracteresEspeciais();
+
+            RuleFor(x => x.Preco)
+                .GreaterThan(0)
+                .NotEmpty();
+
+            RuleFor(x => x.PrecoFixo)
+            .NotEqual(false).When(x => !x.PrecoDiaria)
+            .WithMessage("Selecione um Plano primeiro!");
+
         }
     }
 }

@@ -281,6 +281,12 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
                     b.Property<decimal>("Preco")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<bool>("PrecoDiaria")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("PrecoFixo")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.ToTable("TBTaxasServicos", (string)null);

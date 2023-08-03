@@ -21,6 +21,10 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloTaxasServicos
             builder.Property(x => x.Nome).HasColumnType("varchar(MAX)").IsRequired();
 
             builder.Property(x => x.Preco).IsRequired();
+
+            builder.Property(x => x.PrecoFixo);
+
+            builder.Property(x => x.PrecoDiaria);
         }
     }
 }
