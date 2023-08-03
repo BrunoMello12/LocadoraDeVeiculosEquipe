@@ -18,6 +18,19 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCobranca
 
             RuleFor(x => x.GrupoAutomoveis)
                 .NotNull();
+
+            When(x => x.TipoPlano == TipoPlanoEnum.PlanoDiario || x.TipoPlano == TipoPlanoEnum.PlanoControlador, () =>
+            {
+                RuleFor(x => x.PrecoPorKm)
+                    .GreaterThan(0)
+                    .NotNull()
+                    .WithMessage("O campo PrecoPorKm é obrigatório para o tipo de plano Diário e Controlador.");
+            }).Otherwise(() =>
+            {
+                RuleFor(x => x.PrecoPorKm)
+                    .Null()
+                    .WithMessage("O campo PrecoPorKm não é aplicável para o tipo de plano Livre.");
+            });
         }
 
         private bool BeDecimal(decimal value)

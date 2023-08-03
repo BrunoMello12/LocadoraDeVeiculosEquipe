@@ -290,7 +290,7 @@ namespace LocadoraDeVeiculos.WinFormsApp
 
         private void pToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal(controladores["ControladorPlanoCobranca"]);
+            ConfigurarTelaPrincipal(controladores["ControladorCobranca"]);
         }
 
         private void automóvelToolStripMenuItem1_Click(object sender, EventArgs e)

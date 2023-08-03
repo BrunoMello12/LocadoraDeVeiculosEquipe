@@ -18,20 +18,28 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCobranca
             this.ConfigurarDialog();
             CarregarGrupoAutomoveis(grupoAutomoveis);
             CarregarEnum();
+
+            cbTipoPlano.SelectedIndexChanged += TipoPlanoSelecionado;
         }
 
         public Cobranca ObterCobranca()
         {
+            decimal precoporkm;
+            decimal kmdisponivel;
             cobranca.GrupoAutomoveis = (GrupoAutomoveis)cbGrupoAutomoveis.SelectedItem;
-            cobranca.TipoPlano = (TipoPlanoEnum)cbTipoPlano.SelectedItem;
+            cobranca.TipoPlano = (TipoPlanoEnum)cbTipoPlano.SelectedValue;
             cobranca.PrecoDiaria = Convert.ToDecimal(txtPrecoDiaria.Text);
 
-            if (cobranca.TipoPlano == TipoPlanoEnum.PlanoDiario)
-                cobranca.PrecoPorKm = Convert.ToDecimal(txtPrecoExtrapolado.Text);
-            else if (cobranca.TipoPlano == TipoPlanoEnum.PlanoControlador)
+            if (cobranca.TipoPlano == TipoPlanoEnum.PlanoDiario || cobranca.TipoPlano == TipoPlanoEnum.PlanoControlador)
             {
-                cobranca.PrecoPorKm = Convert.ToDecimal(txtPrecoExtrapolado.Text);
-                cobranca.KmDisponivel = Convert.ToDecimal(txtKmDisponivel.Text);
+                Decimal.TryParse(txtPrecoExtrapolado.Text, out precoporkm);
+                cobranca.PrecoPorKm = precoporkm;
+            }
+
+            if(cobranca.TipoPlano == TipoPlanoEnum.PlanoControlador)
+            {
+                Decimal.TryParse(txtKmDisponivel.Text, out kmdisponivel);
+                cobranca.KmDisponivel = kmdisponivel;
             }
 
             return cobranca;
@@ -39,8 +47,9 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCobranca
 
         public void ConfigurarCobranca(Cobranca cobranca)
         {
+            this.cobranca = cobranca;
             cbGrupoAutomoveis.SelectedItem = cobranca.GrupoAutomoveis;
-            cbTipoPlano.SelectedItem = cobranca.TipoPlano;
+            cbTipoPlano.SelectedValue = cobranca.TipoPlano;
             txtPrecoDiaria.Text = cobranca.PrecoDiaria.ToString();
             txtPrecoExtrapolado.Text = cobranca.PrecoPorKm.ToString();
             txtKmDisponivel.Text = cobranca.KmDisponivel.ToString();
@@ -62,24 +71,32 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCobranca
             }
         }
 
-        private void cbTipoPlano_SelectedIndexChanged(object sender, EventArgs e)
+        private void TipoPlanoSelecionado(object sender, EventArgs e)
         {
-            if (cobranca.TipoPlano == TipoPlanoEnum.PlanoLivre)
+            AtualizarTextBoxes();
+        }
+
+        private void AtualizarTextBoxes()
+        {
+            TipoPlanoEnum tipoPlano = (TipoPlanoEnum)cbTipoPlano.SelectedValue;
+
+            if (tipoPlano == TipoPlanoEnum.PlanoDiario)
             {
-                txtKmDisponivel.Enabled = false;
-                txtPrecoExtrapolado.Enabled = false;
-            }
-            else if (cobranca.TipoPlano == TipoPlanoEnum.PlanoDiario)
-            {
-                txtKmDisponivel.Enabled = false;
                 txtPrecoExtrapolado.Enabled = true;
+                txtKmDisponivel.Enabled = false;
             }
-            else if (cobranca.TipoPlano == TipoPlanoEnum.PlanoControlador)
+            else if (tipoPlano == TipoPlanoEnum.PlanoControlador)
             {
+                txtPrecoExtrapolado.Enabled = true;
                 txtKmDisponivel.Enabled = true;
-                txtPrecoExtrapolado.Enabled = true;
+            }
+            else
+            {
+                txtPrecoExtrapolado.Enabled = false;
+                txtKmDisponivel.Enabled = false;
             }
         }
+
 
         private void CarregarEnum()
         {
@@ -104,6 +121,11 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCobranca
             {
                 cbGrupoAutomoveis.Items.Add(gp);
             }
+        }
+
+        private void cbTipoPlano_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

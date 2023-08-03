@@ -1,11 +1,6 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloAutomovel;
 using LocadoraDeVeiculos.Dominio.ModuloCobranca;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloGrupoAutomoveis
 {
@@ -32,6 +27,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloGrupoAutomoveis
         public override void Atualizar(GrupoAutomoveis registro)
         {
             Nome = registro.Nome;
+        }
+
+        public override string ToString()
+        {
+            return Nome;
         }
     }
 }
