@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace LocadoraDeVeiculos.Infra.Orm.Migrations
 {
     /// <inheritdoc />
-    public partial class ConfigTabelasSemAluguel : Migration
+    public partial class ConfigTables : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -55,7 +55,9 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Nome = table.Column<string>(type: "varchar(MAX)", nullable: false),
-                    Preco = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Preco = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    PrecoFixo = table.Column<bool>(type: "bit", nullable: false),
+                    PrecoDiaria = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

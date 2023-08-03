@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocadoraDeVeiculos.Infra.Orm.Migrations
 {
     [DbContext(typeof(LocadoraDeVeiculosDbContext))]
-    [Migration("20230802191354_ConfigTabelasSemAluguel")]
-    partial class ConfigTabelasSemAluguel
+    [Migration("20230803195011_ConfigTables")]
+    partial class ConfigTables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -283,6 +283,12 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
 
                     b.Property<decimal>("Preco")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<bool>("PrecoDiaria")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("PrecoFixo")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 

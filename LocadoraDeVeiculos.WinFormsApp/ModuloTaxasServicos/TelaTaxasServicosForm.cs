@@ -18,9 +18,16 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloTaxasServicos
 
         public TaxasServicos ObterTaxasServicos()
         {
+            decimal preco;
+
             taxasServicos.Nome = txtNome.Text;
 
-            taxasServicos.Preco = decimal.Parse(txtPreco.Text);
+            decimal.TryParse(txtPreco.Text, out preco);
+            taxasServicos.Preco = preco;
+
+            taxasServicos.PrecoFixo = rdbPrecoFixo.Checked;
+
+            taxasServicos.PrecoDiaria = rdbCobranca.Checked;
 
             return taxasServicos;
         }
@@ -31,7 +38,8 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloTaxasServicos
 
             txtNome.Text = taxasServicos.Nome;
             txtPreco.Text = taxasServicos.Preco.ToString();
-
+            rdbPrecoFixo.Checked = taxasServicos.PrecoFixo;
+            rdbCobranca.Checked = taxasServicos.PrecoDiaria;
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
