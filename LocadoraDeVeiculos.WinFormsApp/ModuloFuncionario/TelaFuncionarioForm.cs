@@ -29,6 +29,8 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloFuncionario
         {
             funcionario.Nome = txtNome.Text;
 
+            funcionario.Salario = decimal.Parse(txtSalario.Text);
+
             return funcionario;
         }
 
@@ -37,6 +39,8 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloFuncionario
             this.funcionario = funcionario;
 
             txtNome.Text = funcionario.Nome;
+
+            txtSalario.Text = funcionario.Salario.ToString();
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
