@@ -1,16 +1,6 @@
 ﻿using FluentResults;
-using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Dominio.ModuloTaxasServicos;
 using LocadoraDeVeiculos.WinFormsApp.Compartilhado;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinFormsApp.ModuloTaxasServicos
 {
@@ -40,6 +30,8 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloTaxasServicos
             this.taxasServicos = taxasServicos;
 
             txtNome.Text = taxasServicos.Nome;
+            txtPreco.Text = taxasServicos.Preco.ToString();
+
         }
 
         private void btnGravar_Click(object sender, EventArgs e)

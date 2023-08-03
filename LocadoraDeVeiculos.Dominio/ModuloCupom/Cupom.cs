@@ -21,6 +21,15 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCupom
             
         }
 
+        public Cupom(string nome, decimal valor, DateTime dataValidade, Parceiro parceiro, List<Cliente> clientesJaUtilizados)
+        {
+            Nome = nome;
+            Valor = valor;
+            DataValidade = dataValidade;
+            Parceiro = parceiro;
+            ClientesJaUtilizados = clientesJaUtilizados;
+        }
+
         public override void Atualizar(Cupom registro)
         {
             Nome = registro.Nome;

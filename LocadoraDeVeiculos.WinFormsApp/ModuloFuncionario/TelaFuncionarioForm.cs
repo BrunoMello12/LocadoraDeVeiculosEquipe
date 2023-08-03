@@ -28,7 +28,6 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloFuncionario
         public Funcionario ObterFuncionario()
         {
             funcionario.Nome = txtNome.Text;
-
             funcionario.Salario = decimal.Parse(txtSalario.Text);
 
             return funcionario;

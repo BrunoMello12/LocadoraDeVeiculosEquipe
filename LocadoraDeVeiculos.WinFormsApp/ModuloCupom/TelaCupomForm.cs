@@ -13,6 +13,8 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCupom
         public TelaCupomForm(List<Parceiro> parceiros)
         {
             InitializeComponent();
+            this.ConfigurarDialog();
+
             CarregarParceiros(parceiros);
         }
 
@@ -28,13 +30,22 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCupom
 
         public void ConfigurarCupom(Cupom cupom)
         {
+            this.cupom = cupom;
             txtNome.Text = cupom.Nome;
             txtValor.Text = cupom.Valor.ToString();
             cbParceiro.SelectedItem = cupom.Parceiro;
             dateValidade.MinDate = cupom.DataValidade;
         }
 
-        private void btnGravar_Click(object sender, EventArgs e)
+        private void CarregarParceiros(List<Parceiro> parceiros)
+        {
+            foreach (Parceiro parceiro in parceiros)
+            {
+                cbParceiro.Items.Add(parceiro);
+            }
+        }
+
+        private void btnGravar_Click_1(object sender, EventArgs e)
         {
             this.cupom = ObterCupom();
 
@@ -49,14 +60,5 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCupom
                 DialogResult = DialogResult.None;
             }
         }
-
-        private void CarregarParceiros(List<Parceiro> parceiros)
-        {
-            foreach(Parceiro parceiro in parceiros)
-            {
-                cbParceiro.Items.Add(parceiro);
-            }
-        }
-
     }
 }

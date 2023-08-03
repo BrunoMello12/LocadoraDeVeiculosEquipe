@@ -16,6 +16,7 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloParceiro
         {
             this.repositorioParceiro = repositorioParceiro;
             this.repositorioParceiro = repositorioParceiro;
+            this.validadorParceiro = validadorParceiro;
         }
 
         public Result Inserir(Parceiro parceiro)

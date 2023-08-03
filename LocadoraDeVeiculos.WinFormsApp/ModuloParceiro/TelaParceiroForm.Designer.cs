@@ -44,6 +44,7 @@
             btnGravar.TabIndex = 102;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click_1;
             // 
             // btnCancelar
             // 
@@ -82,7 +83,7 @@
             Controls.Add(txtNome);
             Controls.Add(label5);
             Name = "TelaParceiroForm";
-            Text = "Cadastro de Pacotes";
+            Text = "Cadastro de Parceiros";
             ResumeLayout(false);
             PerformLayout();
         }

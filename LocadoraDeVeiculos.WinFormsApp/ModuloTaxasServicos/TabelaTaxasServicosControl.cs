@@ -30,7 +30,9 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloTaxasServicos
 
                 new DataGridViewTextBoxColumn { Name = "Nome", HeaderText = "Nome", FillWeight=85F },
 
-                new DataGridViewTextBoxColumn { Name = "Preco", HeaderText = "Preco", FillWeight=85F }
+                new DataGridViewTextBoxColumn { Name = "Preco", HeaderText = "Preço", FillWeight=85F },
+
+                new DataGridViewTextBoxColumn { Name = "PlanoCalculo", HeaderText = "Plano de Calculo", FillWeight=85F }
             };
 
             return colunas;

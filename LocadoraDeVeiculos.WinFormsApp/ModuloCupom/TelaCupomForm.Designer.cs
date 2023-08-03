@@ -83,6 +83,7 @@
             btnGravar.TabIndex = 98;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click_1;
             // 
             // btnCancelar
             // 
