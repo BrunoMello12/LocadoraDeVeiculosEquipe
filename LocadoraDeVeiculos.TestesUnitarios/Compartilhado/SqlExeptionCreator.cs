@@ -8,7 +8,7 @@ using Microsoft.Data.SqlClient;
 
 namespace LocadoraDeVeiculos.TestesUnitarios.Compartilhado
 {
-    public class SqlExeptioCreator
+    public class SqlExeptionCreator
     {
         private static T Construct<T>(params object[] p)
         {
