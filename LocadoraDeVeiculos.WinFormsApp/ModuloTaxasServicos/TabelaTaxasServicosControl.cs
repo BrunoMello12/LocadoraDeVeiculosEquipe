@@ -49,7 +49,7 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloTaxasServicos
 
             foreach (TaxasServicos taxasServicos in listTaxasServicos)
             {
-                grid.Rows.Add(taxasServicos.Id, taxasServicos.Nome, taxasServicos.Preco, taxasServicos.PrecoDiaria ? "Preço diário" : (taxasServicos.PrecoFixo ? "Preço fixo" : ""));
+                grid.Rows.Add(taxasServicos.Id, taxasServicos.Nome, taxasServicos.Preco, taxasServicos.PrecoDiaria ? "Cobrança diária" : (taxasServicos.PrecoFixo ? "Preço fixo" : ""));
             }
         }
     }

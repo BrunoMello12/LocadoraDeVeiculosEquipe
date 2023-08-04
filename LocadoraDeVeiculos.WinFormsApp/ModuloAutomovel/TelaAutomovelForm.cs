@@ -22,11 +22,16 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloAutomovel
 
         public Automovel ObterAutomovel()
         {
+            decimal capacidadelitros;
+
             automovel.Placa = txtPlaca.Text;
             automovel.Marca = txtMarca.Text;
             automovel.Cor = txtCor.Text;
             automovel.Modelo = txtModelo.Text;
-            automovel.CapacidadeLitros = Convert.ToDecimal(txtCapacidadeEmLitros.Text);
+
+            decimal.TryParse(txtCapacidadeEmLitros.Text, out capacidadelitros);
+            automovel.CapacidadeLitros = capacidadelitros;
+
             automovel.GrupoDoAutomovel = (GrupoAutomoveis)cbGrpAutomoveis.SelectedItem;
             automovel.TipoCombustivel = (TipoCombustivelEnum)cbTipoCombustivel.SelectedItem;
 
