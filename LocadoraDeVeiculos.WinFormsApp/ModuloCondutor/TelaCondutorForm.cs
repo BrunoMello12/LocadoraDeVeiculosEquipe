@@ -80,6 +80,7 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCondutor
             txtNome.Text = cliente.Nome;
             txtTelefone.Text = cliente.Telefone;
             txtEmail.Text = cliente.Email;
+            txtCpf.Text = cliente.Cpf;
         }
     }
 }
