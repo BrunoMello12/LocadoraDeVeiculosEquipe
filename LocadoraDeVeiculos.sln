@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraDeVeiculos.Infra.Or
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Acesso a Dados", "4.1 - Acesso a Dados", "{2D8D076F-7638-46C4-B85A-1724469AF3DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraDeVeiculos.Infra.Json", "LocadoraDeVeiculos.Infra.Json\LocadoraDeVeiculos.Infra.Json.csproj", "{24D6549C-26E4-4551-8B6B-C68FA99BCA58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraDeVeiculos.Infra.Json", "LocadoraDeVeiculos.Infra.Json\LocadoraDeVeiculos.Infra.Json.csproj", "{24D6549C-26E4-4551-8B6B-C68FA99BCA58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
