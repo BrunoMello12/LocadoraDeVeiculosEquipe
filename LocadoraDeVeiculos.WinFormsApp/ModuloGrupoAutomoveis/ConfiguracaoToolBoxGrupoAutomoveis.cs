@@ -9,12 +9,12 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloGrupoAutomoveis
 {
     public class ConfiguracaoToolBoxGrupoAutomoveis : ConfiguracaoToolBoxBase
     {
-        public override string TipoCadastro => "Cadastro de Disciplinas";
+        public override string TipoCadastro => "Cadastro de Grupo de Automóveis";
 
-        public override string TooltipInserir => "Inserir nova Disciplina";
+        public override string TooltipInserir => "Inserir novo Grupo de Automóveis";
 
-        public override string TooltipEditar => "Editar uma Disciplina existente";
+        public override string TooltipEditar => "Editar um Grupo de Automóveis";
 
-        public override string TooltipExcluir => "Excluir uma Disciplina existente";
+        public override string TooltipExcluir => "Excluir um Grupo de Automóveis";
     }
 }

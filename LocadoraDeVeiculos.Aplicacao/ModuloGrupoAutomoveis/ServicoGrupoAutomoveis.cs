@@ -25,6 +25,9 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloGrupoAutomoveis
 
             List<string> erros = ValidarGrupoAutomoveis(grupoAutomoveis);
 
+            if (erros.Count() > 0)
+                return Result.Fail(erros);
+
             try
             {
                 repositorioGrupoAutomoveis.Inserir(grupoAutomoveis);

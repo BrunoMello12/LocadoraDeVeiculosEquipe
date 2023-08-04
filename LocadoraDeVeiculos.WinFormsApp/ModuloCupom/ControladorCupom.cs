@@ -116,7 +116,7 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCupom
 
         private void CarregarCupons()
         {
-            List<Cupom> cupons = repositorioCupom.SelecionarTodos();
+            List<Cupom> cupons = repositorioCupom.SelecionarTodos(true);
 
             tabelaCupom.AtualizarRegistros(cupons);
 

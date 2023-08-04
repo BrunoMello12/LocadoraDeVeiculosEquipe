@@ -1,5 +1,7 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloCupom;
+﻿using LocadoraDeVeiculos.Dominio.ModuloCobranca;
+using LocadoraDeVeiculos.Dominio.ModuloCupom;
 using LocadoraDeVeiculos.Infra.Orm.Compartilhado;
+using Microsoft.EntityFrameworkCore;
 
 namespace LocadoraDeVeiculos.Infra.Orm.ModuloCupom
 {
@@ -7,6 +9,14 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloCupom
     {
         public RepositorioCupomEmOrm(LocadoraDeVeiculosDbContext dbContext) : base(dbContext)
         {
+        }
+
+        public List<Cupom> SelecionarTodos(bool incluirParceiro = false)
+        {
+            if (incluirParceiro)
+                return registros.Include(x => x.Parceiro).ToList();
+
+            return registros.ToList();
         }
 
         public Cupom SelecionarPorNome(string nome)

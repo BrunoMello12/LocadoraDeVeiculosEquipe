@@ -17,8 +17,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCupom
             RuleFor(x => x.Valor)
                 .NotEmpty()
                 .NotNull()
-                .Must(BeDecimal)
-                .WithMessage("O campo Valor deve conter apenas números válidos.");
+                .GreaterThan(0);
 
             RuleFor(x => x.DataValidade)
                 .NotNull()
@@ -27,11 +26,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCupom
             RuleFor(x => x.Parceiro)
                 .NotNull()
                 .NotEmpty();
-        }
-
-        private bool BeDecimal(decimal value)
-        {
-            return decimal.TryParse(value.ToString(), out _);
         }
     }
 }
