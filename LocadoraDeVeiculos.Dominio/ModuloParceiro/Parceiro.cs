@@ -1,9 +1,4 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloParceiro
 {
@@ -24,6 +19,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloParceiro
         public override void Atualizar(Parceiro registro)
         {
             Nome = registro.Nome;
+        }
+
+        public override string ToString()
+        {
+            return Nome;
         }
     }
 }

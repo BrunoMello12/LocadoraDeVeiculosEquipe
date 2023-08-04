@@ -20,8 +20,13 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCupom
 
         public Cupom ObterCupom()
         {
+            int valor;
+
             cupom.Nome = txtNome.Text;
-            cupom.Valor = Convert.ToInt32(txtValor.Text);
+
+            int.TryParse(txtValor.Text, out valor);
+            cupom.Valor = valor;
+
             cupom.DataValidade = dateValidade.Value;
             cupom.Parceiro = (Parceiro)cbParceiro.SelectedItem;
 

@@ -26,9 +26,12 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCobranca
         {
             decimal precoporkm;
             decimal kmdisponivel;
+            decimal precoDiaria;
+
             cobranca.GrupoAutomoveis = (GrupoAutomoveis)cbGrupoAutomoveis.SelectedItem;
             cobranca.TipoPlano = (TipoPlanoEnum)cbTipoPlano.SelectedValue;
-            cobranca.PrecoDiaria = Convert.ToDecimal(txtPrecoDiaria.Text);
+            decimal.TryParse(txtPrecoDiaria.Text, out precoDiaria);
+            cobranca.PrecoDiaria = precoDiaria;
 
             if (cobranca.TipoPlano == TipoPlanoEnum.PlanoDiario || cobranca.TipoPlano == TipoPlanoEnum.PlanoControlador)
             {
@@ -36,7 +39,7 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCobranca
                 cobranca.PrecoPorKm = precoporkm;
             }
 
-            if(cobranca.TipoPlano == TipoPlanoEnum.PlanoControlador)
+            if (cobranca.TipoPlano == TipoPlanoEnum.PlanoControlador)
             {
                 Decimal.TryParse(txtKmDisponivel.Text, out kmdisponivel);
                 cobranca.KmDisponivel = kmdisponivel;

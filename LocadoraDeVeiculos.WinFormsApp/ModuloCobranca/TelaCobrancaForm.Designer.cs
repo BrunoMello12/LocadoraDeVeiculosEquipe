@@ -156,12 +156,12 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(167, 108);
+            label3.Location = new Point(154, 105);
             label3.Margin = new Padding(5, 0, 5, 0);
             label3.Name = "label3";
-            label3.Size = new Size(118, 30);
+            label3.Size = new Size(130, 30);
             label3.TabIndex = 17;
-            label3.Text = "Tipo Diária:";
+            label3.Text = "Preço Diária:";
             // 
             // label2
             // 

@@ -17,6 +17,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
                 .NotNull()
                 .MinimumLength(3)
                 .NaoPodeCaracteresEspeciais();
+
+            RuleFor(x => x.Salario)
+                .GreaterThan(1320)
+                .NotEmpty()
+                .NotNull();
         }
     }
 }

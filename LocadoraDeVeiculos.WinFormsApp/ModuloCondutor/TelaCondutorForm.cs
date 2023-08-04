@@ -70,5 +70,17 @@ namespace LocadoraDeVeiculos.WinFormsApp.ModuloCondutor
             }
         }
 
+        private void chEhCondutor_CheckedChanged(object sender, EventArgs e)
+        {
+            if(condutor == null)
+                condutor = new Condutor();
+
+            Cliente cliente = (Cliente)cbCliente.SelectedItem;
+
+            txtNome.Text = cliente.Nome;
+            txtTelefone.Text = cliente.Telefone;
+            txtEmail.Text = cliente.Email;
+            txtCpf.Text = cliente.Cpf;
+        }
     }
 }
