@@ -102,7 +102,7 @@ namespace LocadoraDeVeiculos.WinFormsApp
             ServicoCliente servicoCliente = new ServicoCliente(repositorioCliente, validadorCliente);
             controladores.Add("ControladorCliente", new ControladorCliente(repositorioCliente, servicoCliente));
 
-            //Fumcionario
+            //Funcionario
             IRepositorioFuncionario repositorioFuncionario = new RepositorioFuncionarioEmOrm(dbContext);
             ValidadorFuncionario validadorFuncionario = new ValidadorFuncionario();
             ServicoFuncionario servicoFuncionario = new ServicoFuncionario(repositorioFuncionario, validadorFuncionario);
